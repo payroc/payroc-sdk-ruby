@@ -1,0 +1,18 @@
+# Specify files that shouldn't be modified by Fern
+.gitignore
+
+# Sentry integration
+lib/payroc/sentry_integration.rb
+lib/payroc/client.rb
+
+# Custom HATEOAS pagination
+lib/payroc/internal/iterators/custom_pager.rb
+
+# Custom tests
+test/unit/internal/iterators/test_payroc_pager.rb
+
+# Documentation and setup files
+LICENSE
+README.md
+CONTRIBUTING.md
+scripts

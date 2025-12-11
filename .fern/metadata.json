@@ -1,0 +1,12 @@
+{
+  "cliVersion": "3.0.3",
+  "generatorName": "fernapi/fern-ruby-sdk",
+  "generatorVersion": "1.0.0-rc60",
+  "generatorConfig": {
+    "customPagerName": "PayrocPager",
+    "enableWireTests": true,
+    "extraDependencies": {
+      "sentry-ruby": "~> 6.0"
+    }
+  }
+}

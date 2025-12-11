@@ -1,0 +1,24 @@
+# frozen_string_literal: true
+
+module Payroc
+  module Payments
+    module Refunds
+      module Types
+        module ListRefundsRequestStatusItem
+          extend Payroc::Internal::Types::Enum
+
+          READY = "ready"
+          PENDING = "pending"
+          DECLINED = "declined"
+          COMPLETE = "complete"
+          REFERRAL = "referral"
+          PICKUP = "pickup"
+          REVERSAL = "reversal"
+          ADMIN = "admin"
+          EXPIRED = "expired"
+          ACCEPTED = "accepted"
+        end
+      end
+    end
+  end
+end

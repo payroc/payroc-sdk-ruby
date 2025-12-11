@@ -1,0 +1,13 @@
+# frozen_string_literal: true
+
+module Payroc
+  module Types
+    module SecureTokenMitAgreement
+      extend Payroc::Internal::Types::Enum
+
+      UNSCHEDULED = "unscheduled"
+      RECURRING = "recurring"
+      INSTALLMENT = "installment"
+    end
+  end
+end
