@@ -1,7 +1,5 @@
 # Payroc API Ruby SDK
 
-[![gem shield](https://img.shields.io/gem/v/payroc)](https://rubygems.org/gems/payroc)
-
 The Payroc API Ruby SDK provides convenient access to the Payroc API from Ruby.
 
 ## Contents
