@@ -34,14 +34,14 @@ class AttachmentsWireTest < WireMockTestCase
     )
   end
 
-  def test_attachments_get_attachment_with_wiremock
-    test_id = "attachments.get_attachment.0"
+  def test_attachments_retrieve_with_wiremock
+    test_id = "attachments.retrieve.0"
 
-    @client.attachments.get_attachment(
+    @client.attachments.retrieve(
       attachment_id: "12876",
       request_options: {
         additional_headers: {
-          "X-Test-Id" => "attachments.get_attachment.0"
+          "X-Test-Id" => "attachments.retrieve.0"
         }
       }
     )

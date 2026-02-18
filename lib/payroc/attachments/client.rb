@@ -32,7 +32,7 @@ module Payroc
       #
       # In the response, our gateway returns information about the attachment including its upload status and an
       # attachmentId that you can use to [Retrieve the details of the
-      # Attachment](https://docs.payroc.com/api/schema/attachments/get-attachment).
+      # Attachment](https://docs.payroc.com/api/schema/attachments/retrieve).
       #
       # @param request_options [Hash]
       # @param params [void]
@@ -96,7 +96,7 @@ module Payroc
       # @option params [String] :attachment_id
       #
       # @return [Payroc::Attachments::Types::Attachment]
-      def get_attachment(request_options: {}, **params)
+      def retrieve(request_options: {}, **params)
         params = Payroc::Internal::Types::Utils.normalize_keys(params)
         request = Payroc::Internal::JSON::Request.new(
           base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),

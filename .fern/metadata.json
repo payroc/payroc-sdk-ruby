@@ -1,5 +1,5 @@
 {
-  "cliVersion": "3.78.0",
+  "cliVersion": "3.79.2",
   "generatorName": "fernapi/fern-ruby-sdk",
   "generatorVersion": "1.0.0-rc80",
   "generatorConfig": {
@@ -12,5 +12,5 @@
       "sentry_integration"
     ]
   },
-  "sdkVersion": "0.0.3701"
+  "sdkVersion": "0.0.3770"
 }
