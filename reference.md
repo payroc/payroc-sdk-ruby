@@ -752,7 +752,7 @@ In the request, include the attachment that you want to upload and the following
 - **type** - Type of attachment that you want to upload.
 - **description** - Short description of the attachment.  
 
-In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/get-attachment).
+In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/retrieve).
 </dd>
 </dl>
 </dd>
@@ -813,7 +813,7 @@ client.attachments.upload_to_processing_account(
 </dl>
 </details>
 
-<details><summary><code>client.attachments.<a href="/lib/payroc/attachments/client.rb">get_attachment</a>(attachment_id) -> Payroc::Attachments::Types::Attachment</code></summary>
+<details><summary><code>client.attachments.<a href="/lib/payroc/attachments/client.rb">retrieve</a>(attachment_id) -> Payroc::Attachments::Types::Attachment</code></summary>
 <dl>
 <dd>
 
@@ -844,7 +844,7 @@ Our gateway returns information about the attachment, including its upload statu
 <dd>
 
 ```ruby
-client.attachments.get_attachment(attachment_id: '12876');
+client.attachments.retrieve(attachment_id: '12876');
 ```
 </dd>
 </dl>
