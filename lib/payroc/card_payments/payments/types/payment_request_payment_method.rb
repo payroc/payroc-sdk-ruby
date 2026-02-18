@@ -4,7 +4,13 @@ module Payroc
   module CardPayments
     module Payments
       module Types
-        # Object that contains information about the customer's payment details.
+        # Polymorphic object that contains payment details.
+        #
+        # The value of the type parameter determines which variant you should use:
+        # -	`card` - Payment card details
+        # -	`secureToken` - Secure token details
+        # -	`digitalWallet` - Digital wallet details
+        # -	`singleUseToken` - Single-use token details
         class PaymentRequestPaymentMethod < Internal::Types::Model
           extend Payroc::Internal::Types::Union
 

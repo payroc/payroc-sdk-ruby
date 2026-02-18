@@ -4,7 +4,7 @@ module Payroc
   module PaymentFeatures
     module Cards
       module Types
-        # Object that contains information about the card.
+        # Polymorphic object that contains payment details.
         class CardVerificationRequestCard < Internal::Types::Model
           extend Payroc::Internal::Types::Union
 

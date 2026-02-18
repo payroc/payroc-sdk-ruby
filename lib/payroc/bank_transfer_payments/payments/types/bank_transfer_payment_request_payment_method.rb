@@ -4,7 +4,13 @@ module Payroc
   module BankTransferPayments
     module Payments
       module Types
-        # Object that contains information about the customer's payment details.
+        # Polymorphic object that contains payment detail information.
+        #
+        # The value of the type parameter determines which variant you should use:
+        # -	`ach` - Automated Clearing House (ACH) details
+        # -	`pad` - Pre-authorized debit (PAD) details
+        # -	`secureToken` - Secure token details
+        # -	`singleUseToken` - Single-use token details
         class BankTransferPaymentRequestPaymentMethod < Internal::Types::Model
           extend Payroc::Internal::Types::Union
 

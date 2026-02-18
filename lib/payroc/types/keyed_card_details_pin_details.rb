@@ -2,6 +2,7 @@
 
 module Payroc
   module Types
+    # Polymorphic object that contains information about the customer's PIN.
     class KeyedCardDetailsPinDetails < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

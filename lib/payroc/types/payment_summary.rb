@@ -10,7 +10,7 @@ module Payroc
       field :amount, -> { Integer }, optional: false, nullable: false
       field :status, -> { Payroc::Types::PaymentSummaryStatus }, optional: false, nullable: false
       field :response_code, -> { Payroc::Types::PaymentSummaryResponseCode }, optional: false, nullable: false, api_name: "responseCode"
-      field :response_message, -> { String }, optional: false, nullable: false, api_name: "responseMessage"
+      field :response_message, -> { String }, optional: true, nullable: false, api_name: "responseMessage"
       field :link, -> { Payroc::Types::Link }, optional: true, nullable: false
     end
   end

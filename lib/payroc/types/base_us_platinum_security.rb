@@ -2,7 +2,11 @@
 
 module Payroc
   module Types
-    # Object that contains information about the Platinum Security fee.
+    # Polymorphic object that contains billing details for Platinum Security.
+    #
+    # The value of the billingFrequency field determines which variant you should use:
+    # -	`monthly` - We collect the fee for Platinum Security each month.
+    # -	`annual` - We collect the fee for Platinum Security each year.
     class BaseUsPlatinumSecurity < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

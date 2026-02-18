@@ -2,7 +2,17 @@
 
 module Payroc
   module Types
-    # Object that contains information about card fees.
+    # Polymorphic object that contains fees for card transactions.
+    #
+    # The value of the planType field determines which variant you should use:
+    # -	`interchangePlus` - Interchange + pricing
+    # -	`interchangePlusPlus` - Interchange pricing with three tiers
+    # -	`tiered3` - Three-tiered pricing
+    # -	`tiered4` - Four-tiered pricing
+    # -	`tiered6` - Six-tiered pricing
+    # -	`flatRate` - Flat rate pricing
+    # -	`consumerChoice` - ConsumerChoice
+    # -	`rewardPayChoice` - RewardPayChoice
     class PricingAgreementUs50ProcessorCard < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

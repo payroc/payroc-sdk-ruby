@@ -132,7 +132,7 @@ module Payroc
         # In your request, include the subscriptionId that we sent to you when we created the event subscription.
         #
         # **Note:** If you don't know the subscriptionId of the event subscription, go to [List event
-        # subscriptions](#listEventSubscriptions).
+        # subscriptions](https://docs.payroc.com/api/schema/notifications/event-subscriptions/list).
         #
         # @param request_options [Hash]
         # @param params [Hash]

@@ -2,7 +2,11 @@
 
 module Payroc
   module Types
-    # Object that contains HATEOAS links to the pricing information that we apply to the processing account.
+    # Polymorphic object that contains pricing information for the processing account.
+    #
+    # The value of the type parameter determines which variant you should use:
+    # -	`intent` - Use a pricing agreement template.
+    # -	`agreement` - Create a new pricing agreement.
     class Pricing < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

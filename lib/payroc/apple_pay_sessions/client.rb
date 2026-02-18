@@ -20,7 +20,7 @@ module Payroc
       # encrypted payment details.
       #
       # **Note:** For more information about how to integrate with Apple Pay, go to [Apple
-      # Pay](https://docs.payroc.com/guides/integrate/apple-pay).
+      # Pay](https://docs.payroc.com/guides/take-payments/apple-pay).
       #
       # @param request_options [Hash]
       # @param params [Payroc::ApplePaySessions::Types::ApplePaySessions]

@@ -41,18 +41,24 @@ class FundingFundingRecipientsWireTest < WireMockTestCase
     @client.funding.funding_recipients.create(
       idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
       recipient_type: "privateCorporation",
-      tax_id: "123456789",
-      doing_business_as: "doingBusinessAs",
+      tax_id: "12-3456789",
+      doing_business_as: "Pizza Doe",
       address: {
         address_1: "1 Example Ave.",
+        address_2: "Example Address Line 2",
+        address_3: "Example Address Line 3",
         city: "Chicago",
         state: "Illinois",
         country: "US",
         postal_code: "60056"
       },
       contact_methods: [],
+      metadata: {
+        yourCustomField: "abc123"
+      },
       owners: [{
         first_name: "Jane",
+        middle_name: "Helen",
         last_name: "Doe",
         date_of_birth: "1964-03-22",
         address: {
@@ -64,11 +70,14 @@ class FundingFundingRecipientsWireTest < WireMockTestCase
         },
         identifiers: [{
           type: "nationalId",
-          value: "xxxxx4320"
+          value: "000-00-4320"
         }],
         contact_methods: [],
         relationship: {
-          is_control_prong: true
+          equity_percentage: 48.5,
+          title: "CFO",
+          is_control_prong: true,
+          is_authorized_signatory: false
         }
       }],
       funding_accounts: [{
@@ -120,16 +129,38 @@ class FundingFundingRecipientsWireTest < WireMockTestCase
     @client.funding.funding_recipients.update(
       recipient_id: 1,
       recipient_type: "privateCorporation",
-      tax_id: "123456789",
-      doing_business_as: "doingBusinessAs",
+      tax_id: "12-3456789",
+      doing_business_as: "Doe Hot Dogs",
       address: {
-        address_1: "1 Example Ave.",
+        address_1: "2 Example Ave.",
+        address_2: "Example Address Line 2",
+        address_3: "Example Address Line 3",
         city: "Chicago",
         state: "Illinois",
         country: "US",
         postal_code: "60056"
       },
       contact_methods: [],
+      metadata: {
+        responsiblePerson: "Jane Doe"
+      },
+      owners: [{
+        owner_id: 12_346,
+        link: {
+          rel: "owner",
+          href: "https://api.payroc.com/v1/owners/12346",
+          method_: "get"
+        }
+      }],
+      funding_accounts: [{
+        funding_account_id: 124,
+        status: "approved",
+        link: {
+          rel: "fundingAccount",
+          href: "https://api.payroc.com/v1/funding-accounts/124",
+          method_: "get"
+        }
+      }],
       request_options: {
         additional_headers: {
           "X-Test-Id" => "funding.funding_recipients.update.0"
@@ -194,10 +225,13 @@ class FundingFundingRecipientsWireTest < WireMockTestCase
     @client.funding.funding_recipients.create_account(
       recipient_id: 1,
       idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
-      type: "checking",
+      type: "savings",
       use: "credit",
-      name_on_account: "Jane Doe",
+      name_on_account: "Fred Nerk",
       payment_methods: [],
+      metadata: {
+        responsiblePerson: "Jane Doe"
+      },
       request_options: {
         additional_headers: {
           "X-Test-Id" => "funding.funding_recipients.create_account.0"
@@ -241,11 +275,12 @@ class FundingFundingRecipientsWireTest < WireMockTestCase
     @client.funding.funding_recipients.create_owner(
       recipient_id: 1,
       idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
-      first_name: "Jane",
-      last_name: "Doe",
-      date_of_birth: "1964-03-22",
+      first_name: "Fred",
+      middle_name: "Jim",
+      last_name: "Nerk",
+      date_of_birth: "1980-01-19",
       address: {
-        address_1: "1 Example Ave.",
+        address_1: "2 Example Ave.",
         city: "Chicago",
         state: "Illinois",
         country: "US",
@@ -253,11 +288,14 @@ class FundingFundingRecipientsWireTest < WireMockTestCase
       },
       identifiers: [{
         type: "nationalId",
-        value: "xxxxx4320"
+        value: "000-00-9876"
       }],
       contact_methods: [],
       relationship: {
-        is_control_prong: true
+        equity_percentage: 51.5,
+        title: "CEO",
+        is_control_prong: false,
+        is_authorized_signatory: true
       },
       request_options: {
         additional_headers: {

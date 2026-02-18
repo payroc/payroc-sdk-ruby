@@ -2,7 +2,11 @@
 
 module Payroc
   module Types
-    # Object that contains the tip settings for the processing terminal.
+    # Polymorphic object that indicates if the terminal accepts tips.
+    #
+    # The value of the enabled field determines which variant you should use:
+    # -	`true` - Terminal allows tips.
+    # -	`false` - Terminal doesn't allow tips.
     class ProcessingTerminalFeaturesTips < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

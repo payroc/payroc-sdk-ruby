@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "sentry_integration"
-
 module Payroc
   class Client
     # @param base_url [String, nil]
@@ -52,6 +50,11 @@ module Payroc
     # @return [Payroc::ApplePaySessions::Client]
     def apple_pay_sessions
       @apple_pay_sessions ||= Payroc::ApplePaySessions::Client.new(client: @raw_client, base_url: @base_url, environment: @environment)
+    end
+
+    # @return [Payroc::Attachments::Client]
+    def attachments
+      @attachments ||= Payroc::Attachments::Client.new(client: @raw_client, base_url: @base_url, environment: @environment)
     end
 
     # @return [Payroc::Auth::Client]

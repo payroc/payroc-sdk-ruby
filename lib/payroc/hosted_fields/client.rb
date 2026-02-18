@@ -24,7 +24,7 @@ module Payroc
       # when you configure the JavaScript for Hosted Fields.
       #
       # For more information about adding Hosted Fields to a webpage, go to [Hosted
-      # Fields](https://docs.payroc.com/guides/integrate/hosted-fields).
+      # Fields](https://docs.payroc.com/guides/take-payments/hosted-fields).
       #
       # @param request_options [Hash]
       # @param params [Payroc::HostedFields::Types::HostedFieldsCreateSessionRequest]

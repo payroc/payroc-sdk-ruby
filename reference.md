@@ -541,7 +541,7 @@ In your request, you need to indicate whether the merchant is using Hosted Field
 
 In the response, our gateway returns the session token and the time that it expires. You need the session token when you configure the JavaScript for Hosted Fields.  
 
-For more information about adding Hosted Fields to a webpage, go to [Hosted Fields](https://docs.payroc.com/guides/integrate/hosted-fields). 
+For more information about adding Hosted Fields to a webpage, go to [Hosted Fields](https://docs.payroc.com/guides/take-payments/hosted-fields). 
 </dd>
 </dl>
 </dd>
@@ -658,7 +658,7 @@ Use this method to start an Apple Pay session for your merchant.
 
 In the response, we return the startSessionObject that you send to Apple when you retrieve the cardholder's encrypted payment details.  
 
-**Note:** For more information about how to integrate with Apple Pay, go to [Apple Pay](https://docs.payroc.com/guides/integrate/apple-pay).
+**Note:** For more information about how to integrate with Apple Pay, go to [Apple Pay](https://docs.payroc.com/guides/take-payments/apple-pay).
 </dd>
 </dl>
 </dd>
@@ -717,6 +717,157 @@ client.apple_pay_sessions.create(
 <dd>
 
 **request_options:** `Payroc::ApplePaySessions::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Attachments
+<details><summary><code>client.attachments.<a href="/lib/payroc/attachments/client.rb">upload_to_processing_account</a>(processing_account_id, request) -> Payroc::Attachments::Types::Attachment</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+> Before you upload an attachment, make sure that you follow local privacy regulations and get the merchant's consent to process their information.  
+
+**Note:** You need the ID of the processing account before you can upload an attachment. If you don't know the processingAccountId, go to the [Retrieve a Merchant Platform](https://docs.payroc.com/api/schema/boarding/merchant-platforms/retrieve) method.  
+
+The attachment must be an uncompressed file under 30MB in one of the following formats:
+- .bmp, csv, .doc, .docx, .gif, .htm, .html, .jpg, .jpeg, .msg, .pdf, .png, .ppt, .pptx, .tif, .tiff, .txt, .xls, .xlsx  
+
+In the request, include the attachment that you want to upload and the following information about the attachment:
+- **type** - Type of attachment that you want to upload.
+- **description** - Short description of the attachment.  
+
+In the response, our gateway returns information about the attachment including its upload status and an attachmentId that you can use to [Retrieve the details of the Attachment](https://docs.payroc.com/api/schema/attachments/get-attachment).
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.attachments.upload_to_processing_account(
+  processing_account_id: '38765',
+  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**processing_account_id:** `String` — Unique identifier that we assigned to the processing account.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**idempotency_key:** `String` — Unique identifier that you generate for each request. You must use the [UUID v4 format](https://www.rfc-editor.org/rfc/rfc4122) for the identifier. For more information about the idempotency key, go to [Idempotency](https://docs.payroc.com/api/idempotency).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payroc::Attachments::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.attachments.<a href="/lib/payroc/attachments/client.rb">get_attachment</a>(attachment_id) -> Payroc::Attachments::Types::Attachment</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this method to retrieve the details of an attachment.  
+
+To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the method that you used to upload the attachment.  
+
+Our gateway returns information about the attachment, including its upload status and the entity that the attachment is linked to. Our gateway doesn't return the file that you uploaded.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.attachments.get_attachment(attachment_id: '12876');
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**attachment_id:** `String` — Unique identifier of the attachment
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payroc::Attachments::RequestOptions` 
     
 </dd>
 </dl>
@@ -1119,7 +1270,15 @@ client.bank_transfer_payments.payments.create(
 <dl>
 <dd>
 
-**payment_method:** `Payroc::BankTransferPayments::Payments::Types::BankTransferPaymentRequestPaymentMethod` — Object that contains information about the customer's payment details.
+**payment_method:** `Payroc::BankTransferPayments::Payments::Types::BankTransferPaymentRequestPaymentMethod` 
+
+Polymorphic object that contains payment detail information.  
+
+The value of the type parameter determines which variant you should use:  
+-	`ach` - Automated Clearing House (ACH) details
+-	`pad` - Pre-authorized debit (PAD) details
+-	`secureToken` - Secure token details
+-	`singleUseToken` - Single-use token details
     
 </dd>
 </dl>
@@ -1292,7 +1451,13 @@ client.bank_transfer_payments.payments.represent(
 <dl>
 <dd>
 
-**payment_method:** `Payroc::BankTransferPayments::Payments::Types::RepresentmentPaymentMethod` — Object that contains information about the customer's payment details.
+**payment_method:** `Payroc::BankTransferPayments::Payments::Types::RepresentmentPaymentMethod` 
+
+Polymorphic object that contains the customer's updated payment details.  
+
+The value of the type parameter determines which variant you should use:  
+-	`ach` - Automated Clearing House (ACH) details
+-	`secureToken` - Secure token details
     
 </dd>
 </dl>
@@ -1782,7 +1947,13 @@ client.bank_transfer_payments.refunds.create(
 <dl>
 <dd>
 
-**refund_method:** `Payroc::BankTransferPayments::Refunds::Types::BankTransferUnreferencedRefundRefundMethod` — Object that contains information about how the merchant refunds the customer.
+**refund_method:** `Payroc::BankTransferPayments::Refunds::Types::BankTransferUnreferencedRefundRefundMethod` 
+
+Polymorphic object that contains payment details for the refund.  
+
+The value of the type parameter determines which variant you should use:  
+-	`ach` - Automated Clearing House (ACH) details
+-	`secureToken` - Secure token details
     
 </dd>
 </dl>
@@ -2897,7 +3068,7 @@ You can’t send the after parameter in the same request as the before parameter
 
 Use this method to board a merchant with Payroc.  
 
-**Note**: This method is part of our Boarding solution. To help you understand how this method works with other Boarding methods, go to [Board a Merchant](https://docs.payroc.com/guides/integrate/boarding).  
+**Note**: This method is part of our Boarding solution. To help you understand how this method works with other Boarding methods, go to [Board a Merchant](https://docs.payroc.com/guides/board-merchants/boarding).  
 
 In the request, include the following information:  
 - Legal information, including its legal name and address.  
@@ -3629,7 +3800,15 @@ client.boarding.processing_accounts.retrieve(processing_account_id: '38765');
 <dl>
 <dd>
 
-Retrieve a list of funding accounts associated with a processing account.
+Use this method to return a list of funding accounts linked to a processing acccount.  
+
+To retrieve a list of funding accounts for a processing account, you need the processingAccountId. Our gateway returned the processingAccountId in the response of the [Create Merchant Platform](https://docs.payroc.com/api/schema/boarding/merchant-platforms/create) method or the [Create Proccessing Account](https://docs.payroc.com/api/schema/boarding/merchant-platforms/create-processing-account) method.  
+
+Our gateway returns information about the following for each funding account in the list:  
+- Account information, including the name on the account and payment methods.  
+- Status, including whether we have approved or rejected the account.  
+
+For each funding account, we also return its fundingAccountId, which you can use to perform follow-on actions.  
 </dd>
 </dl>
 </dd>
@@ -4186,7 +4365,7 @@ In the request, specify the gateway settings, device settings, and application s
 
 In the response, our gateway returns information about the terminal order including its status and terminalOrderId that you can use to [retrieve the terminal order](https://docs.payroc.com/api/schema/boarding/terminal-orders/retrieve).  
 
-**Note**: You can subscribe to the terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Events Subscriptions](https://docs.payroc.com/guides/integrate/event-subscriptions).  
+**Note**: You can subscribe to the terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Events Subscriptions](https://docs.payroc.com/guides/board-merchants/event-subscriptions).  
 </dd>
 </dl>
 </dd>
@@ -4837,7 +5016,7 @@ Our gateway returns the following information about the terminal order:
 - Training provider  
 - Shipping information  
 
-**Note**: You can subscribe to our terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Events Subscriptions](https://docs.payroc.com/guides/integrate/event-subscriptions).  
+**Note**: You can subscribe to our terminalOrder.status.changed event to get notifications when we update the status of a terminal order. For more information about how to subscribe to events, go to [Events Subscriptions](https://docs.payroc.com/guides/board-merchants/event-subscriptions).  
 </dd>
 </dl>
 </dd>
@@ -5148,18 +5327,18 @@ In the response, our gateway returns information about the card payment and a pa
 **Payment methods** 
 
 - **Cards** - Credit, debit, and EBT
-- **Digital wallets** - [Apple Pay®](https://docs.payroc.com/guides/integrate/apple-pay) and [Google Pay®](https://docs.payroc.com/guides/integrate/google-pay) 
+- **Digital wallets** - [Apple Pay®](https://docs.payroc.com/guides/take-payments/apple-pay) and [Google Pay®](https://docs.payroc.com/guides/take-payments/google-pay) 
 - **Tokens** - Secure tokens and single-use tokens
 
 **Features** 
 
 Our Create Payment method also supports the following features: 
 
-- [Repeat payments](https://docs.payroc.com/guides/integrate/repeat-payments/use-your-own-software) - Run multiple payments as part of a payment schedule that you manage with your own software. 
+- [Repeat payments](https://docs.payroc.com/guides/take-payments/repeat-payments/use-your-own-software) - Run multiple payments as part of a payment schedule that you manage with your own software. 
 - **Offline sales** - Run a sale or a pre-authorization if the terminal loses its connection to our gateway. 
-- [Tokenization](https://docs.payroc.com/guides/integrate/save-payment-details) - Save card details to use in future transactions. 
-- [3-D Secure](https://docs.payroc.com/guides/integrate/3-d-secure) - Verify the identity of the cardholder. 
-- [Custom fields](https://docs.payroc.com/guides/integrate/add-custom-fields) - Add your own data to a payment. 
+- [Tokenization](https://docs.payroc.com/guides/take-payments/save-payment-details) - Save card details to use in future transactions. 
+- [3-D Secure](https://docs.payroc.com/guides/take-payments/3-d-secure) - Verify the identity of the cardholder. 
+- [Custom fields](https://docs.payroc.com/guides/take-payments/add-custom-fields) - Add your own data to a payment. 
 - **Tips** - Add tips to the card payment.  
 - **Taxes** - Add local taxes to the card payment. 
 - **Surcharging** - Add a surcharge to the card payment. 
@@ -5289,7 +5468,15 @@ client.card_payments.payments.create(
 <dl>
 <dd>
 
-**payment_method:** `Payroc::CardPayments::Payments::Types::PaymentRequestPaymentMethod` — Object that contains information about the customer's payment details.
+**payment_method:** `Payroc::CardPayments::Payments::Types::PaymentRequestPaymentMethod` 
+
+Polymorphic object that contains payment details.  
+
+The value of the type parameter determines which variant you should use:  
+-	`card` - Payment card details
+-	`secureToken` - Secure token details
+-	`digitalWallet` - Digital wallet details
+-	`singleUseToken` - Single-use token details
     
 </dd>
 </dl>
@@ -5297,7 +5484,13 @@ client.card_payments.payments.create(
 <dl>
 <dd>
 
-**three_d_secure:** `Payroc::CardPayments::Payments::Types::PaymentRequestThreeDSecure` — Object that contains information for an authentication check on the customer's payment details using the 3-D Secure protocol.
+**three_d_secure:** `Payroc::CardPayments::Payments::Types::PaymentRequestThreeDSecure` 
+
+Polymorphic object that contains authentication information from 3-D Secure.  
+
+The value of the serviceProvider parameter determines which variant you should use:  
+-	`gateway` - Use our gateway to run a 3-D Secure check.
+-	`thirdParty` - Use a third party to run a 3-D Secure check.
     
 </dd>
 </dl>
@@ -5524,7 +5717,15 @@ client.card_payments.payments.adjust(
 <dl>
 <dd>
 
-**adjustments:** `Internal::Types::Array[Payroc::CardPayments::Payments::Types::PaymentAdjustmentAdjustmentsItem]` — Array of objects that contain information about the adjustments to the payment.
+**adjustments:** `Internal::Types::Array[Payroc::CardPayments::Payments::Types::PaymentAdjustmentAdjustmentsItem]` 
+
+Array of polymorphic objects which contain information about adjustments to a payment.  
+
+The value of the type parameter determines which variant you should use:
+-	`order` - Tip information.
+-	`status` - Status of the transaction.
+-	`customer` - Customer's contact information and shipping address.
+-	`signature` - Customer's signature.
     
 </dd>
 </dl>
@@ -6216,7 +6417,13 @@ client.card_payments.refunds.create_unreferenced_refund(
 <dl>
 <dd>
 
-**refund_method:** `Payroc::CardPayments::Refunds::Types::UnreferencedRefundRefundMethod` — Object that contains information about how the merchant refunds the customer.
+**refund_method:** `Payroc::CardPayments::Refunds::Types::UnreferencedRefundRefundMethod` 
+
+Polymorphic object that contains information about the payment method that the merchant uses to refund the customer.  
+
+The value of the type parameter determines which variant you should use:
+-	`card` - Payment card details
+-	`secureToken` - Secure token details
     
 </dd>
 </dl>
@@ -6403,7 +6610,13 @@ client.card_payments.refunds.adjust(
 <dl>
 <dd>
 
-**adjustments:** `Internal::Types::Array[Payroc::CardPayments::Refunds::Types::RefundAdjustmentAdjustmentsItem]` — Array of objects that contain information about the adjustments to the refund.
+**adjustments:** `Internal::Types::Array[Payroc::CardPayments::Refunds::Types::RefundAdjustmentAdjustmentsItem]` 
+
+Array of polymorphic objects that contain information about adjustments to the refund.  
+
+The value of the type parameter determines which variant you should use:  
+-	`status` - Status of the transaction.
+-	`customer` - Customer's contact information and shipping address.
     
 </dd>
 </dl>
@@ -6642,18 +6855,24 @@ Our gateway returns the recipientId of the funding recipient, which you can use 
 client.funding.funding_recipients.create(
   idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
   recipient_type: 'privateCorporation',
-  tax_id: '123456789',
-  doing_business_as: 'doingBusinessAs',
+  tax_id: '12-3456789',
+  doing_business_as: 'Pizza Doe',
   address: {
     address_1: '1 Example Ave.',
+    address_2: 'Example Address Line 2',
+    address_3: 'Example Address Line 3',
     city: 'Chicago',
     state: 'Illinois',
     country: 'US',
     postal_code: '60056'
   },
   contact_methods: [],
+  metadata: {
+    yourCustomField: 'abc123'
+  },
   owners: [{
     first_name: 'Jane',
+    middle_name: 'Helen',
     last_name: 'Doe',
     date_of_birth: '1964-03-22',
     address: {
@@ -6665,11 +6884,14 @@ client.funding.funding_recipients.create(
     },
     identifiers: [{
       type: 'nationalId',
-      value: 'xxxxx4320'
+      value: '000-00-4320'
     }],
     contact_methods: [],
     relationship: {
-      is_control_prong: true
+      equity_percentage: 48.5,
+      title: 'CFO',
+      is_control_prong: true,
+      is_authorized_signatory: false
     }
   }],
   funding_accounts: [{
@@ -6733,7 +6955,7 @@ client.funding.funding_recipients.create(
 <dl>
 <dd>
 
-**address:** `Payroc::Types::Address` — Address of the funding recipient.
+**address:** `Payroc::Types::Address` — Polymorphic object that contains address information for a funding recipient.
     
 </dd>
 </dl>
@@ -6741,7 +6963,17 @@ client.funding.funding_recipients.create(
 <dl>
 <dd>
 
-**contact_methods:** `Internal::Types::Array[Payroc::Types::ContactMethod]` — Array of contactMethod objects that you can use to add contact methods for the funding recipient. You must provide at least an email address.
+**contact_methods:** `Internal::Types::Array[Payroc::Types::ContactMethod]` 
+
+Array of polymorphic objects, which contain contact information.  
+
+**Note:** You must provide an email address.
+
+The value of the type parameter determines which variant you should use:  
+-	`email` - Email address 
+-	`phone` - Phone number
+-	`mobile` - Mobile number
+-	`fax` - Fax number
     
 </dd>
 </dl>
@@ -6896,16 +7128,38 @@ You can update the following details of a funding recipient:
 client.funding.funding_recipients.update(
   recipient_id: 1,
   recipient_type: 'privateCorporation',
-  tax_id: '123456789',
-  doing_business_as: 'doingBusinessAs',
+  tax_id: '12-3456789',
+  doing_business_as: 'Doe Hot Dogs',
   address: {
-    address_1: '1 Example Ave.',
+    address_1: '2 Example Ave.',
+    address_2: 'Example Address Line 2',
+    address_3: 'Example Address Line 3',
     city: 'Chicago',
     state: 'Illinois',
     country: 'US',
     postal_code: '60056'
   },
-  contact_methods: []
+  contact_methods: [],
+  metadata: {
+    responsiblePerson: 'Jane Doe'
+  },
+  owners: [{
+    owner_id: 12346,
+    link: {
+      rel: 'owner',
+      href: 'https://api.payroc.com/v1/owners/12346',
+      method_: 'get'
+    }
+  }],
+  funding_accounts: [{
+    funding_account_id: 124,
+    status: 'approved',
+    link: {
+      rel: 'fundingAccount',
+      href: 'https://api.payroc.com/v1/funding-accounts/124',
+      method_: 'get'
+    }
+  }]
 );
 ```
 </dd>
@@ -7129,10 +7383,13 @@ Our gateway returns the fundingAccountId, which you can use to run follow-on act
 client.funding.funding_recipients.create_account(
   recipient_id: 1,
   idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  type: 'checking',
+  type: 'savings',
   use: 'credit',
-  name_on_account: 'Jane Doe',
-  payment_methods: []
+  name_on_account: 'Fred Nerk',
+  payment_methods: [],
+  metadata: {
+    responsiblePerson: 'Jane Doe'
+  }
 );
 ```
 </dd>
@@ -7299,11 +7556,12 @@ In the response, our gateway returns the ownerId, which you can use to run follo
 client.funding.funding_recipients.create_owner(
   recipient_id: 1,
   idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  first_name: 'Jane',
-  last_name: 'Doe',
-  date_of_birth: '1964-03-22',
+  first_name: 'Fred',
+  middle_name: 'Jim',
+  last_name: 'Nerk',
+  date_of_birth: '1980-01-19',
   address: {
-    address_1: '1 Example Ave.',
+    address_1: '2 Example Ave.',
     city: 'Chicago',
     state: 'Illinois',
     country: 'US',
@@ -7311,11 +7569,14 @@ client.funding.funding_recipients.create_owner(
   },
   identifiers: [{
     type: 'nationalId',
-    value: 'xxxxx4320'
+    value: '000-00-9876'
   }],
   contact_methods: [],
   relationship: {
-    is_control_prong: true
+    equity_percentage: 51.5,
+    title: 'CEO',
+    is_control_prong: false,
+    is_authorized_signatory: true
   }
 );
 ```
@@ -7579,10 +7840,13 @@ You can update the following details about the funding account:
 ```ruby
 client.funding.funding_accounts.update(
   funding_account_id: 1,
-  type: 'checking',
+  type: 'savings',
   use: 'credit',
-  name_on_account: 'Jane Doe',
-  payment_methods: []
+  name_on_account: 'Fred Nerk',
+  payment_methods: [],
+  metadata: {
+    responsiblePerson: 'Jane Doe'
+  }
 );
 ```
 </dd>
@@ -7849,7 +8113,26 @@ Our gateway returns the instructionId, which you can use to run follow-on action
 <dd>
 
 ```ruby
-client.funding.funding_instructions.create(idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324');
+client.funding.funding_instructions.create(
+  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  merchants: [{
+    merchant_id: '4525644354',
+    recipients: [{
+      funding_account_id: 123,
+      payment_method: 'ACH',
+      amount: {
+        value: 120000,
+        currency: 'USD'
+      },
+      metadata: {
+        yourCustomField: 'abc123'
+      }
+    }]
+  }],
+  metadata: {
+    yourCustomField: 'abc123'
+  }
+);
 ```
 </dd>
 </dl>
@@ -8000,7 +8283,26 @@ You can modify the following information for the funding instruction:
 <dd>
 
 ```ruby
-client.funding.funding_instructions.update(instruction_id: 1);
+client.funding.funding_instructions.update(
+  instruction_id: 1,
+  merchants: [{
+    merchant_id: '9876543219',
+    recipients: [{
+      funding_account_id: 124,
+      payment_method: 'ACH',
+      amount: {
+        value: 69950,
+        currency: 'USD'
+      },
+      metadata: {
+        supplier: 'IT Support Services'
+      }
+    }]
+  }],
+  metadata: {
+    instructionCreatedBy: 'Jane Doe'
+  }
+);
 ```
 </dd>
 </dl>
@@ -8524,7 +8826,7 @@ Use this method to retrieve the details of an event subscription.
 
 In your request, include the subscriptionId that we sent to you when we created the event subscription.  
   
-**Note:** If you don't know the subscriptionId of the event subscription, go to [List event subscriptions](#listEventSubscriptions).
+**Note:** If you don't know the subscriptionId of the event subscription, go to [List event subscriptions](https://docs.payroc.com/api/schema/notifications/event-subscriptions/list).
 </dd>
 </dl>
 </dd>
@@ -8914,7 +9216,7 @@ client.payment_features.cards.verify_card(
 <dl>
 <dd>
 
-**card:** `Payroc::PaymentFeatures::Cards::Types::CardVerificationRequestCard` — Object that contains information about the card.
+**card:** `Payroc::PaymentFeatures::Cards::Types::CardVerificationRequestCard` — Polymorphic object that contains payment details.
     
 </dd>
 </dl>
@@ -9014,7 +9316,13 @@ client.payment_features.cards.view_ebt_balance(
 <dl>
 <dd>
 
-**card:** `Payroc::PaymentFeatures::Cards::Types::BalanceInquiryCard` — Object that contains information about the card.
+**card:** `Payroc::PaymentFeatures::Cards::Types::BalanceInquiryCard` 
+
+Polymorphic object that contains payment details.  
+
+The value of the type parameter determines which variant you should use:  
+-	`card` - Payment card details
+-	`singleUseToken` - Single-use token details
     
 </dd>
 </dl>
@@ -9106,7 +9414,15 @@ client.payment_features.cards.lookup_bin(processing_terminal_id: '1234001');
 <dl>
 <dd>
 
-**card:** `Payroc::PaymentFeatures::Cards::Types::BinLookupCard` — Object that contains information about the card.
+**card:** `Payroc::PaymentFeatures::Cards::Types::BinLookupCard` 
+
+Polymorphic object that contains payment details.  
+
+The value of the type parameter determines which variant you should use:  
+-	`card` - Payment card details
+-	`cardBin` - Bank identification number (BIN) of the payment card
+-	`secureToken` - Secure token details
+-	`digitalWallet` - Digital wallet details
     
 </dd>
 </dl>
@@ -9229,7 +9545,14 @@ client.payment_features.cards.retrieve_fx_rates(
 <dl>
 <dd>
 
-**payment_method:** `Payroc::PaymentFeatures::Cards::Types::FxRateInquiryPaymentMethod` — Object that contains information about the customer's payment details.
+**payment_method:** `Payroc::PaymentFeatures::Cards::Types::FxRateInquiryPaymentMethod` 
+
+Polymorphic object that contains payment details.  
+
+The value of the type parameter determines which variant you should use:  
+-	`card` - Payment card details
+-	`secureToken` - Secure token details
+-	`digitalWallet` - Digital wallet details
     
 </dd>
 </dl>
@@ -9318,7 +9641,13 @@ client.payment_features.bank.verify(
 <dl>
 <dd>
 
-**bank_account:** `Payroc::PaymentFeatures::Bank::Types::BankAccountVerificationRequestBankAccount` — Object that contains information about the bank account.
+**bank_account:** `Payroc::PaymentFeatures::Bank::Types::BankAccountVerificationRequestBankAccount` 
+
+Polymorphic object that contains bank account information.  
+
+The value of the type field determines which variant you should use:  
+-	`ach` - Automated Clearing House (ACH) details
+-	`pad` - Pre-authorized debit (PAD) details
     
 </dd>
 </dl>
@@ -9546,7 +9875,7 @@ client.payment_links.sharing_events.share(
 <dl>
 <dd>
 
-**request:** `Payroc::Types::PaymentLinkEmailShareEvent` 
+**request:** `Payroc::Types::PaymentLinkEmailShareEvent` — Polymorphic object that contains information about how to share a payment link.
     
 </dd>
 </dl>
@@ -10552,7 +10881,7 @@ You can’t send the after parameter in the same request as the before parameter
 
 Use this method to create a payment schedule that you can assign customers to.  
 
-**Note:** This method is part of our Repeat Payments feature. To help you understand how this method works with our Subscriptions endpoints, go to [Repeat Payments](https://docs.payroc.com/guides/integrate/repeat-payments).  
+**Note:** This method is part of our Repeat Payments feature. To help you understand how this method works with our Subscriptions endpoints, go to [Repeat Payments](https://docs.payroc.com/guides/take-payments/repeat-payments).  
 
 When you create a payment plan you need to provide a unique paymentPlanId that you use to run follow-on actions:  
 
@@ -11133,7 +11462,7 @@ You can’t send the after parameter in the same request as the before parameter
 
 Use this method to assign a customer to a payment plan.  
 
-**Note:** This method is part of our Repeat Payments feature. To help you understand how this method works with our Payment plans endpoints, go to [Repeat Payments](https://docs.payroc.com/guides/integrate/repeat-payments).  
+**Note:** This method is part of our Repeat Payments feature. To help you understand how this method works with our Payment plans endpoints, go to [Repeat Payments](https://docs.payroc.com/guides/take-payments/repeat-payments).  
 
 When you create a subscription you need to provide a unique subscriptionId that you use to run follow-on actions:  
 
@@ -11238,7 +11567,7 @@ client.repeat_payments.subscriptions.create(
 <dl>
 <dd>
 
-**payment_method:** `Payroc::RepeatPayments::Subscriptions::Types::SubscriptionRequestPaymentMethod` — Object that contains information about the customer's payment details.
+**payment_method:** `Payroc::RepeatPayments::Subscriptions::Types::SubscriptionRequestPaymentMethod` — Polymorphic object that contains information about the secure token.
     
 </dd>
 </dl>
@@ -13264,7 +13593,15 @@ Indicates how the merchant can use the customer's card details, as agreed by the
 <dl>
 <dd>
 
-**source:** `Payroc::Tokenization::SecureTokens::Types::TokenizationRequestSource` — Object that contains information about the payment method to tokenize.
+**source:** `Payroc::Tokenization::SecureTokens::Types::TokenizationRequestSource` 
+
+Polymorphic object that contains the payment method to tokenize.  
+
+The value of the type parameter determines which variant you should use:  
+-	`ach` - Automated Clearing House (ACH) details
+-	`pad` - Pre-authorized debit (PAD) details
+-	`card` - Payment card details
+-	`singleUseToken` - Single-use token details
     
 </dd>
 </dl>
@@ -13272,7 +13609,13 @@ Indicates how the merchant can use the customer's card details, as agreed by the
 <dl>
 <dd>
 
-**three_d_secure:** `Payroc::Tokenization::SecureTokens::Types::TokenizationRequestThreeDSecure` — Object that contains information for an authentication check on the customer's payment details using the 3-D Secure protocol.
+**three_d_secure:** `Payroc::Tokenization::SecureTokens::Types::TokenizationRequestThreeDSecure` 
+
+Polymorphic object that contains authentication information from 3-D Secure.  
+
+The value of the type parameter determines which variant you should use:  
+-	`gatewayThreeDSecure` - Use our gateway to run a 3-D Secure check.
+-	`thirdPartyThreeDSecure` - Use a third party to run a 3-D Secure check.
     
 </dd>
 </dl>
@@ -13591,7 +13934,7 @@ client.tokenization.secure_tokens.partially_update(
 
 Use this method to update a secure token if you have a single-use token from Hosted Fields.  
 
-**Note:** If you don't have a single-use token, you can update saved payment details with our [Update Secure Token](https://docs.payroc.com/api/resources#updateSecureToken) method. For more information about our two options to update a secure token, go to [Update saved payment details](https://docs.payroc.com/guides/integrate/update-saved-payment-details).  
+**Note:** If you don't have a single-use token, you can update saved payment details with our [Update Secure Token](https://docs.payroc.com/api/resources#updateSecureToken) method. For more information about our two options to update a secure token, go to [Update saved payment details](https://docs.payroc.com/guides/take-payments/update-saved-payment-details).  
 </dd>
 </dl>
 </dd>
@@ -13755,7 +14098,14 @@ client.tokenization.single_use_tokens.create(
 <dl>
 <dd>
 
-**source:** `Payroc::Tokenization::SingleUseTokens::Types::SingleUseTokenRequestSource` — Object that contains information about the payment method to tokenize.
+**source:** `Payroc::Tokenization::SingleUseTokens::Types::SingleUseTokenRequestSource` 
+
+Polymorphic object that contains the payment method to tokenize.  
+
+The value of the type parameter determines which variant you should use:  
+-	`ach` - Automated Clearing House (ACH) details
+-	`pad` - Pre-authorized debit (PAD) details
+-	`card` - Payment card details
     
 </dd>
 </dl>

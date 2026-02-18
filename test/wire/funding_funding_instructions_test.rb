@@ -42,6 +42,23 @@ class FundingFundingInstructionsWireTest < WireMockTestCase
 
     @client.funding.funding_instructions.create(
       idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+      merchants: [{
+        merchant_id: "4525644354",
+        recipients: [{
+          funding_account_id: 123,
+          payment_method: "ACH",
+          amount: {
+            value: 120_000,
+            currency: "USD"
+          },
+          metadata: {
+            yourCustomField: "abc123"
+          }
+        }]
+      }],
+      metadata: {
+        yourCustomField: "abc123"
+      },
       request_options: {
         additional_headers: {
           "X-Test-Id" => "funding.funding_instructions.create.0"
@@ -84,6 +101,23 @@ class FundingFundingInstructionsWireTest < WireMockTestCase
 
     @client.funding.funding_instructions.update(
       instruction_id: 1,
+      merchants: [{
+        merchant_id: "9876543219",
+        recipients: [{
+          funding_account_id: 124,
+          payment_method: "ACH",
+          amount: {
+            value: 69_950,
+            currency: "USD"
+          },
+          metadata: {
+            supplier: "IT Support Services"
+          }
+        }]
+      }],
+      metadata: {
+        instructionCreatedBy: "Jane Doe"
+      },
       request_options: {
         additional_headers: {
           "X-Test-Id" => "funding.funding_instructions.update.0"

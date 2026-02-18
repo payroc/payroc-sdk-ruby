@@ -4,7 +4,7 @@ module Payroc
   module RepeatPayments
     module Subscriptions
       module Types
-        # Object that contains information about the customer's payment details.
+        # Polymorphic object that contains information about the secure token.
         class SubscriptionRequestPaymentMethod < Internal::Types::Model
           extend Payroc::Internal::Types::Union
 
