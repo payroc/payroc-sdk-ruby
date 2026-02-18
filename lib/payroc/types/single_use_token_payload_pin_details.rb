@@ -2,6 +2,11 @@
 
 module Payroc
   module Types
+    # Polymorphic object that contains information about a customer's PIN.
+    #
+    # The value of the dataFormat parameter determines which variant you should use:
+    # - `dukpt` - PIN information is encrypted.
+    # - `raw` - PIN information is unencrypted.
     class SingleUseTokenPayloadPinDetails < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

@@ -2,7 +2,11 @@
 
 module Payroc
   module Types
-    # Object that contains details about EBT transactions.
+    # Polymorphic object that indicates if the terminal accepts EBT transactions.
+    #
+    # The value of the enabled field determines which variant you should use:
+    # -	`true` - Terminal allows EBT transactions.
+    # -	`false` - Terminal doesn't allow EBT transactions.
     class ProcessingTerminalFeaturesEbt < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

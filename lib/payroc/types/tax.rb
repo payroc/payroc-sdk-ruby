@@ -2,7 +2,11 @@
 
 module Payroc
   module Types
-    # Object that contains information about the tax details.
+    # Polymorphic object that contains tax details.
+    #
+    # The value of the type parameter determines which variant you should use:
+    # -	`amount` - Tax is a fixed amount.
+    # -	`rate` - Tax is a percentage.
     class Tax < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

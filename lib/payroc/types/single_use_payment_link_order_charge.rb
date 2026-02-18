@@ -2,7 +2,11 @@
 
 module Payroc
   module Types
-    # Indicates whether the merchant or the customer enters the amount for the transaction.
+    # Polymorphic object that indicates who enters the amount for the payment link.
+    #
+    # The value of the type parameter determines which variant you should use:
+    # -	`prompt` - Customer enters the amount.
+    # -	`preset` - Merchant sets the amount.
     class SingleUsePaymentLinkOrderCharge < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

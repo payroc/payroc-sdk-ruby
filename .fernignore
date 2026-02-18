@@ -3,7 +3,6 @@
 
 # Sentry integration
 lib/payroc/sentry_integration.rb
-lib/payroc/client.rb
 
 # Custom HATEOAS pagination
 lib/payroc/internal/iterators/custom_pager.rb
@@ -19,4 +18,8 @@ test/integration/
 LICENSE
 README.md
 CONTRIBUTING.md
-scripts
+pipelines/
+scripts/
+.previewignore
+SECURITY.md
+.github/CODEOWNERS

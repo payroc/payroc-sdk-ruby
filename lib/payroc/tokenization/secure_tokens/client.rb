@@ -323,7 +323,7 @@ module Payroc
         # **Note:** If you don't have a single-use token, you can update saved payment details with our [Update Secure
         # Token](https://docs.payroc.com/api/resources#updateSecureToken) method. For more information about our two
         # options to update a secure token, go to [Update saved payment
-        # details](https://docs.payroc.com/guides/integrate/update-saved-payment-details).
+        # details](https://docs.payroc.com/guides/take-payments/update-saved-payment-details).
         #
         # @param request_options [Hash]
         # @param params [Payroc::Types::AccountUpdate]

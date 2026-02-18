@@ -61,10 +61,13 @@ class FundingFundingAccountsWireTest < WireMockTestCase
 
     @client.funding.funding_accounts.update(
       funding_account_id: 1,
-      type: "checking",
+      type: "savings",
       use: "credit",
-      name_on_account: "Jane Doe",
+      name_on_account: "Fred Nerk",
       payment_methods: [],
+      metadata: {
+        responsiblePerson: "Jane Doe"
+      },
       request_options: {
         additional_headers: {
           "X-Test-Id" => "funding.funding_accounts.update.0"

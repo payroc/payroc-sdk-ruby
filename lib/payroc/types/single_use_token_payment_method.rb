@@ -2,7 +2,7 @@
 
 module Payroc
   module Types
-    # Object that contains information about the customer's payment details.
+    # Polymorphic object that contains payment card details.
     class SingleUseTokenPaymentMethod < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 

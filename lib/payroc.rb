@@ -65,6 +65,13 @@ require_relative "payroc/payment_links/types/retrieve_payment_links_response"
 require_relative "payroc/payment_links/types/partially_update_payment_links_response"
 require_relative "payroc/payment_links/types/deactivate_payment_links_response"
 require_relative "payroc/hosted_fields/types/hosted_fields_create_session_request_scenario"
+require_relative "payroc/attachments/types/upload_to_processing_account_attachments_request_attachment_type"
+require_relative "payroc/attachments/types/upload_to_processing_account_attachments_request_attachment"
+require_relative "payroc/attachments/types/attachment_type"
+require_relative "payroc/attachments/types/attachment_upload_status"
+require_relative "payroc/attachments/types/attachment_entity_type"
+require_relative "payroc/attachments/types/attachment_entity"
+require_relative "payroc/attachments/types/attachment"
 require_relative "payroc/auth/types/get_token_response"
 require_relative "payroc/types/link"
 require_relative "payroc/types/common_funding_status"
@@ -664,6 +671,9 @@ require_relative "payroc/hosted_fields/client"
 require_relative "payroc/hosted_fields/types/hosted_fields_create_session_request"
 require_relative "payroc/apple_pay_sessions/client"
 require_relative "payroc/apple_pay_sessions/types/apple_pay_sessions"
+require_relative "payroc/attachments/client"
+require_relative "payroc/attachments/types/upload_attachment"
+require_relative "payroc/attachments/types/get_attachment_request"
 require_relative "payroc/auth/client"
 require_relative "payroc/auth/types/retrieve_token_auth_request"
 require_relative "payroc/funding/client"
@@ -830,3 +840,10 @@ require_relative "payroc/tokenization/single_use_tokens/client"
 require_relative "payroc/tokenization/single_use_tokens/types/single_use_token_request"
 require_relative "payroc/environment"
 require_relative "payroc/internal/inferred_auth_provider"
+
+# Load user-defined files if present (e.g., for Sentry integration)
+# Files are loaded from lib/payroc/ if they exist
+["payroc/sentry_integration"].each do |relative_path|
+  absolute_path = File.join(__dir__, "#{relative_path}.rb")
+  require_relative relative_path if File.exist?(absolute_path)
+end

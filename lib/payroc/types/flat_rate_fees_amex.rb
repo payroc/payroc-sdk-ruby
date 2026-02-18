@@ -2,7 +2,7 @@
 
 module Payroc
   module Types
-    # Object that contains the fees for American Express transactions.
+    # Polymorphic object that contains fees for American Express transactions.
     class FlatRateFeesAmex < Internal::Types::Model
       extend Payroc::Internal::Types::Union
 
