@@ -95,10 +95,9 @@ module Payroc
         # @return [Payroc::Types::BankTransferPayment]
         def refund(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[payment_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[amount description]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::BankTransferPayments::Refunds::Types::BankTransferReferencedRefund.new(params).to_h
+          non_body_param_names = %w[paymentId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -108,7 +107,7 @@ module Payroc
             method: "POST",
             path: "bank-transfer-payments/#{params[:payment_id]}/refund",
             headers: headers,
-            body: Payroc::BankTransferPayments::Refunds::Types::BankTransferReferencedRefund.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -239,8 +238,9 @@ module Payroc
         # @return [Payroc::Types::BankTransferRefund]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[processing_terminal_id order customer refund_method custom_fields]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::BankTransferPayments::Refunds::Types::BankTransferUnreferencedRefund.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -250,7 +250,7 @@ module Payroc
             method: "POST",
             path: "bank-transfer-refunds",
             headers: headers,
-            body: Payroc::BankTransferPayments::Refunds::Types::BankTransferUnreferencedRefund.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

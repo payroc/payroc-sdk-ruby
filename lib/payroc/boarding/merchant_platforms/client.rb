@@ -111,8 +111,9 @@ module Payroc
         # @return [Payroc::Types::MerchantPlatform]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[business processing_accounts metadata]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::Boarding::MerchantPlatforms::Types::CreateMerchantAccount.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -122,7 +123,7 @@ module Payroc
             method: "POST",
             path: "merchant-platforms",
             headers: headers,
-            body: Payroc::Boarding::MerchantPlatforms::Types::CreateMerchantAccount.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

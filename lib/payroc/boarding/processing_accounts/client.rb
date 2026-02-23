@@ -443,10 +443,9 @@ module Payroc
         # @return [Payroc::Types::TerminalOrder]
         def create_terminal_order(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[processing_account_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[training_provider shipping order_items]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::Boarding::ProcessingAccounts::Types::CreateTerminalOrder.new(params).to_h
+          non_body_param_names = %w[processingAccountId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -456,7 +455,7 @@ module Payroc
             method: "POST",
             path: "processing-accounts/#{params[:processing_account_id]}/terminal-orders",
             headers: headers,
-            body: Payroc::Boarding::ProcessingAccounts::Types::CreateTerminalOrder.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

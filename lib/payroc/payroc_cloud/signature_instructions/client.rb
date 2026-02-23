@@ -39,10 +39,9 @@ module Payroc
         # @return [Payroc::Types::SignatureInstruction]
         def submit(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[serial_number]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[processing_terminal_id]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::PayrocCloud::SignatureInstructions::Types::SignatureInstructionRequest.new(params).to_h
+          non_body_param_names = %w[serialNumber Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -52,7 +51,7 @@ module Payroc
             method: "POST",
             path: "devices/#{params[:serial_number]}/signature-instructions",
             headers: headers,
-            body: Payroc::PayrocCloud::SignatureInstructions::Types::SignatureInstructionRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

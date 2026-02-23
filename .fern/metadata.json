@@ -1,7 +1,7 @@
 {
-  "cliVersion": "3.79.2",
+  "cliVersion": "3.82.0",
   "generatorName": "fernapi/fern-ruby-sdk",
-  "generatorVersion": "1.0.0-rc80",
+  "generatorVersion": "1.0.1",
   "generatorConfig": {
     "customPagerName": "PayrocPager",
     "enableWireTests": true,
@@ -12,5 +12,5 @@
       "sentry_integration"
     ]
   },
-  "sdkVersion": "0.0.3770"
+  "sdkVersion": "0.0.3921"
 }

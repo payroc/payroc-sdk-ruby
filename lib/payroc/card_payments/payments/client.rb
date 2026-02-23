@@ -165,8 +165,9 @@ module Payroc
         # @return [Payroc::Types::Payment]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[channel processing_terminal_id operator order customer ip_address payment_method three_d_secure credential_on_file offline_processing auto_capture process_as_sale custom_fields]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Payments::Types::PaymentRequest.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -176,7 +177,7 @@ module Payroc
             method: "POST",
             path: "payments",
             headers: headers,
-            body: Payroc::CardPayments::Payments::Types::PaymentRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -273,10 +274,9 @@ module Payroc
         # @return [Payroc::Types::Payment]
         def adjust(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[payment_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[operator adjustments]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Payments::Types::PaymentAdjustment.new(params).to_h
+          non_body_param_names = %w[paymentId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -286,7 +286,7 @@ module Payroc
             method: "POST",
             path: "payments/#{params[:payment_id]}/adjust",
             headers: headers,
-            body: Payroc::CardPayments::Payments::Types::PaymentAdjustment.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -338,10 +338,9 @@ module Payroc
         # @return [Payroc::Types::Payment]
         def capture(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[payment_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[processing_terminal_id operator amount breakdown]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Payments::Types::PaymentCapture.new(params).to_h
+          non_body_param_names = %w[paymentId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -351,7 +350,7 @@ module Payroc
             method: "POST",
             path: "payments/#{params[:payment_id]}/capture",
             headers: headers,
-            body: Payroc::CardPayments::Payments::Types::PaymentCapture.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

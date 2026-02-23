@@ -46,10 +46,10 @@ class PaymentLinksSharingEventsWireTest < WireMockTestCase
       idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
       sharing_method: "email",
       merchant_copy: true,
-      message: 'Dear Sarah,
+      message: "Dear Sarah,
       Your insurance is expiring this month.
       Please, pay the renewal fee by the end of the month to renew it.
-      ',
+      ",
       recipients: [{
         name: "Sarah Hazel Hopper",
         email: "sarah.hopper@example.com"

@@ -34,8 +34,9 @@ module Payroc
         # @return [Payroc::Types::CardVerificationResult]
         def verify_card(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[processing_terminal_id operator customer card]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::PaymentFeatures::Cards::Types::CardVerificationRequest.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -45,7 +46,7 @@ module Payroc
             method: "POST",
             path: "cards/verify",
             headers: headers,
-            body: Payroc::PaymentFeatures::Cards::Types::CardVerificationRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -77,14 +78,11 @@ module Payroc
         # @return [Payroc::Types::Balance]
         def view_ebt_balance(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[processing_terminal_id operator currency customer card]
-          body_bag = params.slice(*body_prop_names)
-
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
             path: "cards/balance",
-            body: Payroc::PaymentFeatures::Cards::Types::BalanceInquiry.new(body_bag).to_h,
+            body: Payroc::PaymentFeatures::Cards::Types::BalanceInquiry.new(params).to_h,
             request_options: request_options
           )
           begin
@@ -123,14 +121,11 @@ module Payroc
         # @return [Payroc::Types::CardInfo]
         def lookup_bin(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[processing_terminal_id amount currency card]
-          body_bag = params.slice(*body_prop_names)
-
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
             path: "cards/bin-lookup",
-            body: Payroc::PaymentFeatures::Cards::Types::BinLookup.new(body_bag).to_h,
+            body: Payroc::PaymentFeatures::Cards::Types::BinLookup.new(params).to_h,
             request_options: request_options
           )
           begin
@@ -183,14 +178,11 @@ module Payroc
         # @return [Payroc::Types::FxRate]
         def retrieve_fx_rates(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[channel processing_terminal_id operator base_amount base_currency payment_method]
-          body_bag = params.slice(*body_prop_names)
-
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
             path: "fx-rates",
-            body: Payroc::PaymentFeatures::Cards::Types::FxRateInquiry.new(body_bag).to_h,
+            body: Payroc::PaymentFeatures::Cards::Types::FxRateInquiry.new(params).to_h,
             request_options: request_options
           )
           begin

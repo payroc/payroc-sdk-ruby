@@ -41,19 +41,19 @@ For each payment link, we also return a paymentLinkId, which you can use for fol
 
 ```ruby
 client.payment_links.list(
-  processing_terminal_id: '1234001',
-  merchant_reference: 'LinkRef6543',
-  link_type: 'multiUse',
-  charge_type: 'preset',
-  status: 'active',
-  recipient_name: 'Sarah Hazel Hopper',
-  recipient_email: 'sarah.hopper@example.com',
-  created_on: '2024-07-02',
-  expires_on: '2024-08-02',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  merchant_reference: "LinkRef6543",
+  link_type: "multiUse",
+  charge_type: "preset",
+  status: "active",
+  recipient_name: "Sarah Hazel Hopper",
+  recipient_email: "sarah.hopper@example.com",
+  created_on: "2024-07-02",
+  expires_on: "2024-08-02",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -226,9 +226,9 @@ If your request is successful, our gateway returns a paymentLinkId, which you ca
 
 ```ruby
 client.payment_links.create(
-  processing_terminal_id: '1234001',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  processing_terminal_id: "1234001",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -317,7 +317,7 @@ Our gateway returns the following information about the payment link:
 <dd>
 
 ```ruby
-client.payment_links.retrieve(payment_link_id: 'JZURRJBUPS');
+client.payment_links.retrieve(payment_link_id: "JZURRJBUPS")
 ```
 </dd>
 </dl>
@@ -400,10 +400,10 @@ You can update the following properties of a single-use link:
 
 ```ruby
 client.payment_links.partially_update(
-  payment_link_id: 'JZURRJBUPS',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  payment_link_id: "JZURRJBUPS",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   request: []
-);
+)
 ```
 </dd>
 </dl>
@@ -487,7 +487,7 @@ If your request is successful, our gateway deactivates the payment link. The cus
 <dd>
 
 ```ruby
-client.payment_links.deactivate(payment_link_id: 'JZURRJBUPS');
+client.payment_links.deactivate(payment_link_id: "JZURRJBUPS")
 ```
 </dd>
 </dl>
@@ -557,11 +557,11 @@ For more information about adding Hosted Fields to a webpage, go to [Hosted Fiel
 
 ```ruby
 client.hosted_fields.create(
-  processing_terminal_id: '1234001',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  lib_version: '1.1.0.123456',
-  scenario: 'payment'
-);
+  processing_terminal_id: "1234001",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  lib_version: "1.1.0.123456",
+  scenario: "payment"
+)
 ```
 </dd>
 </dl>
@@ -674,10 +674,10 @@ In the response, we return the startSessionObject that you send to Apple when yo
 
 ```ruby
 client.apple_pay_sessions.create(
-  processing_terminal_id: '1234001',
-  apple_domain_id: 'DUHDZJHGYY',
-  apple_validation_url: 'https://apple-pay-gateway.apple.com/paymentservices/startSession'
-);
+  processing_terminal_id: "1234001",
+  apple_domain_id: "DUHDZJHGYY",
+  apple_validation_url: "https://apple-pay-gateway.apple.com/paymentservices/startSession"
+)
 ```
 </dd>
 </dl>
@@ -768,9 +768,9 @@ In the response, our gateway returns information about the attachment including 
 
 ```ruby
 client.attachments.upload_to_processing_account(
-  processing_account_id: '38765',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  processing_account_id: "38765",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -844,7 +844,7 @@ Our gateway returns information about the attachment, including its upload statu
 <dd>
 
 ```ruby
-client.attachments.retrieve(attachment_id: '12876');
+client.attachments.retrieve(attachment_id: "12876")
 ```
 </dd>
 </dl>
@@ -907,7 +907,7 @@ Obtain an access token using client credentials
 <dd>
 
 ```ruby
-client.auth.retrieve_token(api_key: 'x-api-key');
+client.auth.retrieve_token(api_key: "x-api-key")
 ```
 </dd>
 </dl>
@@ -984,19 +984,19 @@ For each transaction, we also return the paymentId and an optional secureTokenId
 
 ```ruby
 client.bank_transfer_payments.payments.list(
-  processing_terminal_id: '1234001',
-  order_id: 'OrderRef6543',
-  name_on_account: 'Sarah%20Hazel%20Hopper',
-  last_4: '7890',
-  date_from: '2024-07-01T00:00:00Z',
-  date_to: '2024-07-31T23:59:59Z',
-  settlement_state: 'settled',
-  settlement_date: '2024-07-15',
-  payment_link_id: 'JZURRJBUPS',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  order_id: "OrderRef6543",
+  name_on_account: "Sarah%20Hazel%20Hopper",
+  last_4: "7890",
+  date_from: "2024-07-01T00:00:00Z",
+  date_to: "2024-07-31T23:59:59Z",
+  settlement_state: "settled",
+  settlement_date: "2024-07-15",
+  payment_link_id: "JZURRJBUPS",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -1184,38 +1184,38 @@ You can also use [secure tokens](https://docs.payroc.com/api/schema/payments/sec
 
 ```ruby
 client.bank_transfer_payments.payments.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  processing_terminal_id: '1234001',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  processing_terminal_id: "1234001",
   order: {
-    order_id: 'OrderRef6543',
-    description: 'Large Pepperoni Pizza',
+    order_id: "OrderRef6543",
+    description: "Large Pepperoni Pizza",
     amount: 4999,
-    currency: 'USD',
+    currency: "USD",
     breakdown: {
       subtotal: 4347,
       tip: {
-        type: 'percentage',
+        type: "percentage",
         percentage: 10
       },
       taxes: [{
-        type: 'rate',
+        type: "rate",
         rate: 5,
-        name: 'Sales Tax'
+        name: "Sales Tax"
       }]
     }
   },
   customer: {
-    notification_language: 'en',
+    notification_language: "en",
     contact_methods: []
   },
   credential_on_file: {
     tokenize: true
   },
   custom_fields: [{
-    name: 'yourCustomField',
-    value: 'abc123'
+    name: "yourCustomField",
+    value: "abc123"
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -1346,7 +1346,7 @@ If the merchant saved the customer’s bank account details, our gateway returns
 <dd>
 
 ```ruby
-client.bank_transfer_payments.payments.retrieve(payment_id: 'M2MJOG6O2Y');
+client.bank_transfer_payments.payments.retrieve(payment_id: "M2MJOG6O2Y")
 ```
 </dd>
 </dl>
@@ -1418,9 +1418,9 @@ If your request is successful, our gateway re-presents the payment.
 
 ```ruby
 client.bank_transfer_payments.payments.represent(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -1512,9 +1512,9 @@ If your request is successful, our gateway removes the bank transfer payment fro
 
 ```ruby
 client.bank_transfer_payments.refunds.reverse_payment(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -1595,11 +1595,11 @@ If your refund is successful, our gateway returns the payment amount to the cust
 
 ```ruby
 client.bank_transfer_payments.refunds.refund(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   amount: 4999,
-  description: 'amount to refund'
-);
+  description: "amount to refund"
+)
 ```
 </dd>
 </dl>
@@ -1697,18 +1697,18 @@ For referenced refunds, our gateway also returns details about the payment that 
 
 ```ruby
 client.bank_transfer_payments.refunds.list(
-  processing_terminal_id: '1234001',
-  order_id: 'OrderRef6543',
-  name_on_account: 'Sarah%20Hazel%20Hopper',
-  last_4: '7062',
-  date_from: '2024-07-01T00:00:00Z',
-  date_to: '2024-07-31T23:59:59Z',
-  settlement_state: 'settled',
-  settlement_date: '2024-07-15',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  order_id: "OrderRef6543",
+  name_on_account: "Sarah%20Hazel%20Hopper",
+  last_4: "7062",
+  date_from: "2024-07-01T00:00:00Z",
+  date_to: "2024-07-31T23:59:59Z",
+  settlement_state: "settled",
+  settlement_date: "2024-07-15",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -1884,23 +1884,23 @@ In the response, our gateway returns information about the refund and a refundId
 
 ```ruby
 client.bank_transfer_payments.refunds.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  processing_terminal_id: '1234001',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  processing_terminal_id: "1234001",
   order: {
-    order_id: 'OrderRef6543',
-    description: 'Refund for order OrderRef6543',
+    order_id: "OrderRef6543",
+    description: "Refund for order OrderRef6543",
     amount: 4999,
-    currency: 'USD'
+    currency: "USD"
   },
   customer: {
-    notification_language: 'en',
+    notification_language: "en",
     contact_methods: []
   },
   custom_fields: [{
-    name: 'yourCustomField',
-    value: 'abc123'
+    name: "yourCustomField",
+    value: "abc123"
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -2019,7 +2019,7 @@ If the refund is a referenced refund, our gateway also returns details about the
 <dd>
 
 ```ruby
-client.bank_transfer_payments.refunds.retrieve(refund_id: 'CD3HN88U9F');
+client.bank_transfer_payments.refunds.retrieve(refund_id: "CD3HN88U9F")
 ```
 </dd>
 </dl>
@@ -2088,9 +2088,9 @@ If your request is successful, the gateway removes the refund from the merchant�
 
 ```ruby
 client.bank_transfer_payments.refunds.reverse_refund(
-  refund_id: 'CD3HN88U9F',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  refund_id: "CD3HN88U9F",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -2170,7 +2170,7 @@ Our gateway returns the following information about an owner:
 <dd>
 
 ```ruby
-client.boarding.owners.retrieve(owner_id: 1);
+client.boarding.owners.retrieve(owner_id: 1)
 ```
 </dd>
 </dl>
@@ -2247,31 +2247,31 @@ You can update the following details about an owner:
 ```ruby
 client.boarding.owners.update(
   owner_id: 1,
-  first_name: 'Jane',
-  middle_name: 'Helen',
-  last_name: 'Doe',
-  date_of_birth: '1964-03-22',
+  first_name: "Jane",
+  middle_name: "Helen",
+  last_name: "Doe",
+  date_of_birth: "1964-03-22",
   address: {
-    address_1: '1 Example Ave.',
-    address_2: 'Example Address Line 2',
-    address_3: 'Example Address Line 3',
-    city: 'Chicago',
-    state: 'Illinois',
-    country: 'US',
-    postal_code: '60056'
+    address_1: "1 Example Ave.",
+    address_2: "Example Address Line 2",
+    address_3: "Example Address Line 3",
+    city: "Chicago",
+    state: "Illinois",
+    country: "US",
+    postal_code: "60056"
   },
   identifiers: [{
-    type: 'nationalId',
-    value: '000-00-4320'
+    type: "nationalId",
+    value: "000-00-4320"
   }],
   contact_methods: [],
   relationship: {
     equity_percentage: 48.5,
-    title: 'CFO',
+    title: "CFO",
     is_control_prong: true,
     is_authorized_signatory: false
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -2347,7 +2347,7 @@ To delete an owner, you need their ownerId. Our gateway returned the ownerId in 
 <dd>
 
 ```ruby
-client.boarding.owners.delete(owner_id: 1);
+client.boarding.owners.delete(owner_id: 1)
 ```
 </dd>
 </dl>
@@ -2420,10 +2420,10 @@ For each pricing intent, we also return its pricingIntentId which you can use to
 
 ```ruby
 client.boarding.pricing_intents.list(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -2523,17 +2523,17 @@ In the response, our gateway returns information about the pricing intent and th
 
 ```ruby
 client.boarding.pricing_intents.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  key: 'Your-Unique-Identifier',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  key: "Your-Unique-Identifier",
   metadata: {
-    yourCustomField: 'abc123'
+    yourCustomField: "abc123"
   },
-  country: 'US',
-  version: '5.0',
+  country: "US",
+  version: "5.0",
   base: {
     address_verification: 5,
     annual_fee: {
-      bill_in_month: 'june',
+      bill_in_month: "june",
       amount: 9900
     },
     regulatory_assistance_program: 15,
@@ -2549,7 +2549,7 @@ client.boarding.pricing_intents.create(
   },
   processor: {},
   services: []
-);
+)
 ```
 </dd>
 </dl>
@@ -2628,7 +2628,7 @@ Our gateway returns the following information about the pricing intent:
 <dd>
 
 ```ruby
-client.boarding.pricing_intents.retrieve(pricing_intent_id: '5');
+client.boarding.pricing_intents.retrieve(pricing_intent_id: "5")
 ```
 </dd>
 </dl>
@@ -2701,17 +2701,17 @@ You can update the following details about a pricing intent:
 
 ```ruby
 client.boarding.pricing_intents.update(
-  pricing_intent_id: '5',
-  key: 'Your-Unique-Identifier',
+  pricing_intent_id: "5",
+  key: "Your-Unique-Identifier",
   metadata: {
-    yourCustomField: 'abc123'
+    yourCustomField: "abc123"
   },
-  country: 'US',
-  version: '5.0',
+  country: "US",
+  version: "5.0",
   base: {
     address_verification: 5,
     annual_fee: {
-      bill_in_month: 'june',
+      bill_in_month: "june",
       amount: 9900
     },
     regulatory_assistance_program: 15,
@@ -2749,7 +2749,7 @@ client.boarding.pricing_intents.update(
     }
   },
   services: []
-);
+)
 ```
 </dd>
 </dl>
@@ -2825,7 +2825,7 @@ To delete a pricing intent, you need its pricingIntentId. Our gateway returned t
 <dd>
 
 ```ruby
-client.boarding.pricing_intents.delete(pricing_intent_id: '5');
+client.boarding.pricing_intents.delete(pricing_intent_id: "5")
 ```
 </dd>
 </dl>
@@ -2900,10 +2900,10 @@ You can update the following details about a pricing intent:
 
 ```ruby
 client.boarding.pricing_intents.partially_update(
-  pricing_intent_id: '5',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  pricing_intent_id: "5",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   request: []
-);
+)
 ```
 </dd>
 </dl>
@@ -2992,10 +2992,10 @@ For each merchant platform, we also return its merchantPlatformId and its linked
 
 ```ruby
 client.boarding.merchant_platforms.list(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -3095,66 +3095,66 @@ You need to keep these to perform follow-on actions, for example, you need the p
 
 ```ruby
 client.boarding.merchant_platforms.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   business: {
-    name: 'Example Corp',
-    tax_id: '12-3456789',
-    organization_type: 'privateCorporation',
-    country_of_operation: 'US',
+    name: "Example Corp",
+    tax_id: "12-3456789",
+    organization_type: "privateCorporation",
+    country_of_operation: "US",
     addresses: [{
-      address_1: '1 Example Ave.',
-      address_2: 'Example Address Line 2',
-      address_3: 'Example Address Line 3',
-      city: 'Chicago',
-      state: 'Illinois',
-      country: 'US',
-      postal_code: '60056',
-      type: 'legalAddress'
+      address_1: "1 Example Ave.",
+      address_2: "Example Address Line 2",
+      address_3: "Example Address Line 3",
+      city: "Chicago",
+      state: "Illinois",
+      country: "US",
+      postal_code: "60056",
+      type: "legalAddress"
     }],
     contact_methods: []
   },
   processing_accounts: [{
-    doing_business_as: 'Pizza Doe',
+    doing_business_as: "Pizza Doe",
     owners: [{
-      first_name: 'Jane',
-      middle_name: 'Helen',
-      last_name: 'Doe',
-      date_of_birth: '1964-03-22',
+      first_name: "Jane",
+      middle_name: "Helen",
+      last_name: "Doe",
+      date_of_birth: "1964-03-22",
       address: {
-        address_1: '1 Example Ave.',
-        address_2: 'Example Address Line 2',
-        address_3: 'Example Address Line 3',
-        city: 'Chicago',
-        state: 'Illinois',
-        country: 'US',
-        postal_code: '60056'
+        address_1: "1 Example Ave.",
+        address_2: "Example Address Line 2",
+        address_3: "Example Address Line 3",
+        city: "Chicago",
+        state: "Illinois",
+        country: "US",
+        postal_code: "60056"
       },
       identifiers: [{
-        type: 'nationalId',
-        value: '000-00-4320'
+        type: "nationalId",
+        value: "000-00-4320"
       }],
       contact_methods: [],
       relationship: {
         equity_percentage: 48.5,
-        title: 'CFO',
+        title: "CFO",
         is_control_prong: true,
         is_authorized_signatory: false
       }
     }],
-    website: 'www.example.com',
-    business_type: 'restaurant',
+    website: "www.example.com",
+    business_type: "restaurant",
     category_code: 5999,
-    merchandise_or_service_sold: 'Pizza',
-    business_start_date: '2020-01-01',
-    timezone: 'America/Chicago',
+    merchandise_or_service_sold: "Pizza",
+    business_start_date: "2020-01-01",
+    timezone: "America/Chicago",
     address: {
-      address_1: '1 Example Ave.',
-      address_2: 'Example Address Line 2',
-      address_3: 'Example Address Line 3',
-      city: 'Chicago',
-      state: 'Illinois',
-      country: 'US',
-      postal_code: '60056'
+      address_1: "1 Example Ave.",
+      address_2: "Example Address Line 2",
+      address_3: "Example Address Line 3",
+      city: "Chicago",
+      state: "Illinois",
+      country: "US",
+      postal_code: "60056"
     },
     contact_methods: [],
     processing: {
@@ -3172,13 +3172,13 @@ client.boarding.merchant_platforms.create(
         ecommerce: 20
       },
       is_seasonal: true,
-      months_of_operation: ['jan', 'feb'],
+      months_of_operation: %w[jan feb],
       ach: {
-        naics: '5812',
+        naics: "5812",
         previously_terminated_for_ach: false,
         refunds: {
           written_refund_policy: true,
-          refund_policy_url: 'www.example.com/refund-poilcy-url'
+          refund_policy_url: "www.example.com/refund-poilcy-url"
         },
         estimated_monthly_transactions: 3000,
         limits: {
@@ -3186,63 +3186,63 @@ client.boarding.merchant_platforms.create(
           daily_deposit: 200000,
           monthly_deposit: 6000000
         },
-        transaction_types: ['prearrangedPayment', 'other'],
-        transaction_types_other: 'anotherTransactionType'
+        transaction_types: %w[prearrangedPayment other],
+        transaction_types_other: "anotherTransactionType"
       },
       card_acceptance: {
         debit_only: false,
         hsa_fsa: false,
-        cards_accepted: ['visa', 'mastercard'],
+        cards_accepted: %w[visa mastercard],
         speciality_cards: {
           american_express_direct: {
             enabled: true,
-            merchant_number: 'abc1234567'
+            merchant_number: "abc1234567"
           },
           electronic_benefits_transfer: {
             enabled: true,
-            fns_number: '6789012'
+            fns_number: "6789012"
           },
           other: {
-            wex_merchant_number: 'abc1234567',
-            voyager_merchant_id: 'abc1234567',
-            fleet_merchant_id: 'abc1234567'
+            wex_merchant_number: "abc1234567",
+            voyager_merchant_id: "abc1234567",
+            fleet_merchant_id: "abc1234567"
           }
         }
       }
     },
     funding: {
-      funding_schedule: 'nextday',
+      funding_schedule: "nextday",
       accelerated_funding_fee: 1999,
       daily_discount: false,
       funding_accounts: [{
-        type: 'checking',
-        use: 'creditAndDebit',
-        name_on_account: 'Jane Doe',
+        type: "checking",
+        use: "creditAndDebit",
+        name_on_account: "Jane Doe",
         payment_methods: [],
         metadata: {
-          yourCustomField: 'abc123'
+          yourCustomField: "abc123"
         }
       }]
     },
     contacts: [{
-      type: 'manager',
-      first_name: 'Jane',
-      middle_name: 'Helen',
-      last_name: 'Doe',
+      type: "manager",
+      first_name: "Jane",
+      middle_name: "Helen",
+      last_name: "Doe",
       identifiers: [{
-        type: 'nationalId',
-        value: '000-00-4320'
+        type: "nationalId",
+        value: "000-00-4320"
       }],
       contact_methods: []
     }],
     metadata: {
-      customerId: '2345'
+      customerId: "2345"
     }
   }],
   metadata: {
-    customerId: '2345'
+    customerId: "2345"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -3337,7 +3337,7 @@ Our gateway returns the following information about the merchant platform:
 <dd>
 
 ```ruby
-client.boarding.merchant_platforms.retrieve(merchant_platform_id: '12345');
+client.boarding.merchant_platforms.retrieve(merchant_platform_id: "12345")
 ```
 </dd>
 </dl>
@@ -3413,12 +3413,12 @@ For each processing account, we also return its processingAccountId, which you c
 
 ```ruby
 client.boarding.merchant_platforms.list_processing_accounts(
-  merchant_platform_id: '12345',
-  before: '2571',
-  after: '8516',
+  merchant_platform_id: "12345",
+  before: "2571",
+  after: "8516",
   limit: 1,
   include_closed: true
-);
+)
 ```
 </dd>
 </dl>
@@ -3537,49 +3537,49 @@ When you send a successful request, we review the information about the processi
 
 ```ruby
 client.boarding.merchant_platforms.create_processing_account(
-  merchant_platform_id: '12345',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  doing_business_as: 'Pizza Doe',
+  merchant_platform_id: "12345",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  doing_business_as: "Pizza Doe",
   owners: [{
-    first_name: 'Jane',
-    middle_name: 'Helen',
-    last_name: 'Doe',
-    date_of_birth: '1964-03-22',
+    first_name: "Jane",
+    middle_name: "Helen",
+    last_name: "Doe",
+    date_of_birth: "1964-03-22",
     address: {
-      address_1: '1 Example Ave.',
-      address_2: 'Example Address Line 2',
-      address_3: 'Example Address Line 3',
-      city: 'Chicago',
-      state: 'Illinois',
-      country: 'US',
-      postal_code: '60056'
+      address_1: "1 Example Ave.",
+      address_2: "Example Address Line 2",
+      address_3: "Example Address Line 3",
+      city: "Chicago",
+      state: "Illinois",
+      country: "US",
+      postal_code: "60056"
     },
     identifiers: [{
-      type: 'nationalId',
-      value: '000-00-4320'
+      type: "nationalId",
+      value: "000-00-4320"
     }],
     contact_methods: [],
     relationship: {
       equity_percentage: 51.5,
-      title: 'CFO',
+      title: "CFO",
       is_control_prong: true,
       is_authorized_signatory: false
     }
   }],
-  website: 'www.example.com',
-  business_type: 'restaurant',
+  website: "www.example.com",
+  business_type: "restaurant",
   category_code: 5999,
-  merchandise_or_service_sold: 'Pizza',
-  business_start_date: '2020-01-01',
-  timezone: 'America/Chicago',
+  merchandise_or_service_sold: "Pizza",
+  business_start_date: "2020-01-01",
+  timezone: "America/Chicago",
   address: {
-    address_1: '1 Example Ave.',
-    address_2: 'Example Address Line 2',
-    address_3: 'Example Address Line 3',
-    city: 'Chicago',
-    state: 'Illinois',
-    country: 'US',
-    postal_code: '60056'
+    address_1: "1 Example Ave.",
+    address_2: "Example Address Line 2",
+    address_3: "Example Address Line 3",
+    city: "Chicago",
+    state: "Illinois",
+    country: "US",
+    postal_code: "60056"
   },
   contact_methods: [],
   processing: {
@@ -3597,13 +3597,13 @@ client.boarding.merchant_platforms.create_processing_account(
       ecommerce: 20
     },
     is_seasonal: true,
-    months_of_operation: ['jan', 'feb'],
+    months_of_operation: %w[jan feb],
     ach: {
-      naics: '5812',
+      naics: "5812",
       previously_terminated_for_ach: false,
       refunds: {
         written_refund_policy: true,
-        refund_policy_url: 'www.example.com/refund-poilcy-url'
+        refund_policy_url: "www.example.com/refund-poilcy-url"
       },
       estimated_monthly_transactions: 3000,
       limits: {
@@ -3611,59 +3611,59 @@ client.boarding.merchant_platforms.create_processing_account(
         daily_deposit: 200000,
         monthly_deposit: 6000000
       },
-      transaction_types: ['prearrangedPayment', 'other'],
-      transaction_types_other: 'anotherTransactionType'
+      transaction_types: %w[prearrangedPayment other],
+      transaction_types_other: "anotherTransactionType"
     },
     card_acceptance: {
       debit_only: false,
       hsa_fsa: false,
-      cards_accepted: ['visa', 'mastercard'],
+      cards_accepted: %w[visa mastercard],
       speciality_cards: {
         american_express_direct: {
           enabled: true,
-          merchant_number: 'abc1234567'
+          merchant_number: "abc1234567"
         },
         electronic_benefits_transfer: {
           enabled: true,
-          fns_number: '6789012'
+          fns_number: "6789012"
         },
         other: {
-          wex_merchant_number: 'abc1234567',
-          voyager_merchant_id: 'abc1234567',
-          fleet_merchant_id: 'abc1234567'
+          wex_merchant_number: "abc1234567",
+          voyager_merchant_id: "abc1234567",
+          fleet_merchant_id: "abc1234567"
         }
       }
     }
   },
   funding: {
-    funding_schedule: 'nextday',
+    funding_schedule: "nextday",
     accelerated_funding_fee: 1999,
     daily_discount: false,
     funding_accounts: [{
-      type: 'checking',
-      use: 'creditAndDebit',
-      name_on_account: 'Jane Doe',
+      type: "checking",
+      use: "creditAndDebit",
+      name_on_account: "Jane Doe",
       payment_methods: [],
       metadata: {
-        yourCustomField: 'abc123'
+        yourCustomField: "abc123"
       }
     }]
   },
   contacts: [{
-    type: 'manager',
-    first_name: 'Jane',
-    middle_name: 'Helen',
-    last_name: 'Doe',
+    type: "manager",
+    first_name: "Jane",
+    middle_name: "Helen",
+    last_name: "Doe",
     identifiers: [{
-      type: 'nationalId',
-      value: '000-00-4320'
+      type: "nationalId",
+      value: "000-00-4320"
     }],
     contact_methods: []
   }],
   metadata: {
-    customerId: '2345'
+    customerId: "2345"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -3753,7 +3753,7 @@ Our gateway returns the following information about the processing account:
 <dd>
 
 ```ruby
-client.boarding.processing_accounts.retrieve(processing_account_id: '38765');
+client.boarding.processing_accounts.retrieve(processing_account_id: "38765")
 ```
 </dd>
 </dl>
@@ -3823,7 +3823,7 @@ For each funding account, we also return its fundingAccountId, which you can use
 <dd>
 
 ```ruby
-client.boarding.processing_accounts.list_processing_account_funding_accounts(processing_account_id: '38765');
+client.boarding.processing_accounts.list_processing_account_funding_accounts(processing_account_id: "38765")
 ```
 </dd>
 </dl>
@@ -3897,11 +3897,11 @@ For each contact, we also return a contactId, which you can use to perform follo
 
 ```ruby
 client.boarding.processing_accounts.list_contacts(
-  processing_account_id: '38765',
-  before: '2571',
-  after: '8516',
+  processing_account_id: "38765",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -4006,7 +4006,7 @@ Our gateway returns the following information about the pricing agreement that w
 <dd>
 
 ```ruby
-client.boarding.processing_accounts.get_processing_account_pricing_agreement(processing_account_id: '38765');
+client.boarding.processing_accounts.get_processing_account_pricing_agreement(processing_account_id: "38765")
 ```
 </dd>
 </dl>
@@ -4079,11 +4079,11 @@ Our gateway returns the following information about each owner in the list:
 
 ```ruby
 client.boarding.processing_accounts.list_owners(
-  processing_account_id: '38765',
-  before: '2571',
-  after: '8516',
+  processing_account_id: "38765",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -4186,9 +4186,9 @@ When you send a successful request, we send an email to the merchant that prompt
 
 ```ruby
 client.boarding.processing_accounts.create_reminder(
-  processing_account_id: '38765',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  processing_account_id: "38765",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -4282,11 +4282,11 @@ For each terminal order, we also return its terminalOrderId, which you can use t
 
 ```ruby
 client.boarding.processing_accounts.list_terminal_orders(
-  processing_account_id: '38765',
-  status: 'open',
-  from_date_time: '2024-09-08T12:00:00Z',
-  to_date_time: '2024-12-08T11:00:00Z'
-);
+  processing_account_id: "38765",
+  status: "open",
+  from_date_time: "2024-09-08T12:00:00Z",
+  to_date_time: "2024-12-08T11:00:00Z"
+)
 ```
 </dd>
 </dl>
@@ -4381,39 +4381,39 @@ In the response, our gateway returns information about the terminal order includ
 
 ```ruby
 client.boarding.processing_accounts.create_terminal_order(
-  processing_account_id: '38765',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  training_provider: 'payroc',
+  processing_account_id: "38765",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  training_provider: "payroc",
   shipping: {
     preferences: {
-      method_: 'nextDay',
+      method_: "nextDay",
       saturday_delivery: true
     },
     address: {
-      recipient_name: 'Recipient Name',
-      business_name: 'Company Ltd',
-      address_line_1: '1 Example Ave.',
-      address_line_2: 'Example Address Line 2',
-      city: 'Chicago',
-      state: 'Illinois',
-      postal_code: '60056',
-      email: 'example@mail.com',
-      phone: '2025550164'
+      recipient_name: "Recipient Name",
+      business_name: "Company Ltd",
+      address_line_1: "1 Example Ave.",
+      address_line_2: "Example Address Line 2",
+      city: "Chicago",
+      state: "Illinois",
+      postal_code: "60056",
+      email: "example@mail.com",
+      phone: "2025550164"
     }
   },
   order_items: [{
-    type: 'solution',
-    solution_template_id: 'Roc Services_DX8000',
+    type: "solution",
+    solution_template_id: "Roc Services_DX8000",
     solution_quantity: 1,
-    device_condition: 'new',
+    device_condition: "new",
     solution_setup: {
-      timezone: 'America/Chicago',
-      industry_template_id: 'Retail',
+      timezone: "America/Chicago",
+      industry_template_id: "Retail",
       gateway_settings: {
-        merchant_portfolio_id: 'Company Ltd',
-        merchant_template_id: 'Company Ltd Merchant Template',
-        user_template_id: 'Company Ltd User Template',
-        terminal_template_id: 'Company Ltd Terminal Template'
+        merchant_portfolio_id: "Company Ltd",
+        merchant_template_id: "Company Ltd Merchant Template",
+        user_template_id: "Company Ltd User Template",
+        terminal_template_id: "Company Ltd Terminal Template"
       },
       application_settings: {
         clerk_prompt: false,
@@ -4425,7 +4425,7 @@ client.boarding.processing_accounts.create_terminal_order(
       },
       device_settings: {
         number_of_mobile_users: 2,
-        communication_type: 'wifi'
+        communication_type: "wifi"
       },
       receipt_notifications: {
         email_receipt: true,
@@ -4433,7 +4433,7 @@ client.boarding.processing_accounts.create_terminal_order(
       },
       taxes: [{
         tax_rate: 6,
-        tax_label: 'Sales Tax'
+        tax_label: "Sales Tax"
       }],
       tips: {
         enabled: false
@@ -4441,7 +4441,7 @@ client.boarding.processing_accounts.create_terminal_order(
       tokenization: true
     }
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -4549,11 +4549,11 @@ For each processing terminal, we also return its processingTerminalId, which you
 
 ```ruby
 client.boarding.processing_accounts.list_processing_terminals(
-  processing_account_id: '38765',
-  before: '2571',
-  after: '8516',
+  processing_account_id: "38765",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -4662,7 +4662,7 @@ Our gateway returns the following information about the processing terminal:
 <dd>
 
 ```ruby
-client.boarding.processing_terminals.retrieve(processing_terminal_id: '1234001');
+client.boarding.processing_terminals.retrieve(processing_terminal_id: "1234001")
 ```
 </dd>
 </dl>
@@ -4726,7 +4726,7 @@ Our gateway returns the configuration settings for the merchant and the payment 
 <dd>
 
 ```ruby
-client.boarding.processing_terminals.retrieve_host_configuration(processing_terminal_id: '1234001');
+client.boarding.processing_terminals.retrieve_host_configuration(processing_terminal_id: "1234001")
 ```
 </dd>
 </dl>
@@ -4798,7 +4798,7 @@ Our gateway returns the following information about a contact:
 <dd>
 
 ```ruby
-client.boarding.contacts.retrieve(contact_id: 1);
+client.boarding.contacts.retrieve(contact_id: 1)
 ```
 </dd>
 </dl>
@@ -4873,16 +4873,16 @@ You can update the following details about a contact:
 ```ruby
 client.boarding.contacts.update(
   contact_id: 1,
-  type: 'manager',
-  first_name: 'Jane',
-  middle_name: 'Helen',
-  last_name: 'Doe',
+  type: "manager",
+  first_name: "Jane",
+  middle_name: "Helen",
+  last_name: "Doe",
   identifiers: [{
-    type: 'nationalId',
-    value: '000-00-4320'
+    type: "nationalId",
+    value: "000-00-4320"
   }],
   contact_methods: []
-);
+)
 ```
 </dd>
 </dl>
@@ -4956,7 +4956,7 @@ To delete a contact, you need their contactId. Our gateway returned the contactI
 <dd>
 
 ```ruby
-client.boarding.contacts.delete(contact_id: 1);
+client.boarding.contacts.delete(contact_id: 1)
 ```
 </dd>
 </dl>
@@ -5031,7 +5031,7 @@ Our gateway returns the following information about the terminal order:
 <dd>
 
 ```ruby
-client.boarding.terminal_orders.retrieve(terminal_order_id: '12345');
+client.boarding.terminal_orders.retrieve(terminal_order_id: "12345")
 ```
 </dd>
 </dl>
@@ -5108,22 +5108,22 @@ For each transaction, we also return the paymentId and an optional secureTokenId
 
 ```ruby
 client.card_payments.payments.list(
-  processing_terminal_id: '1234001',
-  order_id: 'OrderRef6543',
-  operator: 'Jane',
-  cardholder_name: 'Sarah%20Hazel%20Hopper',
-  first_6: '453985',
-  last_4: '7062',
-  tender: 'ebt',
-  date_from: '2024-07-01T15:30:00Z',
-  date_to: '2024-07-03T15:30:00Z',
-  settlement_state: 'settled',
-  settlement_date: '2024-07-02',
-  payment_link_id: 'JZURRJBUPS',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  order_id: "OrderRef6543",
+  operator: "Jane",
+  cardholder_name: "Sarah%20Hazel%20Hopper",
+  first_6: "453985",
+  last_4: "7062",
+  tender: "ebt",
+  date_from: "2024-07-01T15:30:00Z",
+  date_to: "2024-07-03T15:30:00Z",
+  settlement_state: "settled",
+  settlement_date: "2024-07-02",
+  payment_link_id: "JZURRJBUPS",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -5358,46 +5358,46 @@ Our Create Payment method also supports the following features:
 
 ```ruby
 client.card_payments.payments.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  channel: 'web',
-  processing_terminal_id: '1234001',
-  operator: 'Jane',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  channel: "web",
+  processing_terminal_id: "1234001",
+  operator: "Jane",
   order: {
-    order_id: 'OrderRef6543',
-    description: 'Large Pepperoni Pizza',
+    order_id: "OrderRef6543",
+    description: "Large Pepperoni Pizza",
     amount: 4999,
-    currency: 'USD'
+    currency: "USD"
   },
   customer: {
-    first_name: 'Sarah',
-    last_name: 'Hopper',
+    first_name: "Sarah",
+    last_name: "Hopper",
     billing_address: {
-      address_1: '1 Example Ave.',
-      address_2: 'Example Address Line 2',
-      address_3: 'Example Address Line 3',
-      city: 'Chicago',
-      state: 'Illinois',
-      country: 'US',
-      postal_code: '60056'
+      address_1: "1 Example Ave.",
+      address_2: "Example Address Line 2",
+      address_3: "Example Address Line 3",
+      city: "Chicago",
+      state: "Illinois",
+      country: "US",
+      postal_code: "60056"
     },
     shipping_address: {
-      recipient_name: 'Sarah Hopper',
+      recipient_name: "Sarah Hopper",
       address: {
-        address_1: '1 Example Ave.',
-        address_2: 'Example Address Line 2',
-        address_3: 'Example Address Line 3',
-        city: 'Chicago',
-        state: 'Illinois',
-        country: 'US',
-        postal_code: '60056'
+        address_1: "1 Example Ave.",
+        address_2: "Example Address Line 2",
+        address_3: "Example Address Line 3",
+        city: "Chicago",
+        state: "Illinois",
+        country: "US",
+        postal_code: "60056"
       }
     }
   },
   custom_fields: [{
-    name: 'yourCustomField',
-    value: 'abc123'
+    name: "yourCustomField",
+    value: "abc123"
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -5600,7 +5600,7 @@ If the merchant saved the customer's card details, our gateway returns a secureT
 <dd>
 
 ```ruby
-client.card_payments.payments.retrieve(payment_id: 'M2MJOG6O2Y');
+client.card_payments.payments.retrieve(payment_id: "M2MJOG6O2Y")
 ```
 </dd>
 </dl>
@@ -5675,10 +5675,10 @@ Our gateway returns information about the adjusted payment, including informatio
 
 ```ruby
 client.card_payments.payments.adjust(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   adjustments: []
-);
+)
 ```
 </dd>
 </dl>
@@ -5786,10 +5786,10 @@ If your request is successful, our gateway takes the amount from the payment car
 
 ```ruby
 client.card_payments.payments.capture(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  processing_terminal_id: '1234001',
-  operator: 'Jane',
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  processing_terminal_id: "1234001",
+  operator: "Jane",
   amount: 4999,
   breakdown: {
     subtotal: 4999,
@@ -5800,7 +5800,7 @@ client.card_payments.payments.capture(
       quantity: 1
     }]
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -5913,10 +5913,10 @@ If your request is successful, our gateway removes the payment from the merchant
 
 ```ruby
 client.card_payments.refunds.reverse(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   amount: 4999
-);
+)
 ```
 </dd>
 </dl>
@@ -6017,11 +6017,11 @@ If your refund is successful, our gateway returns the payment amount to the card
 
 ```ruby
 client.card_payments.refunds.create_referenced_refund(
-  payment_id: 'M2MJOG6O2Y',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  payment_id: "M2MJOG6O2Y",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   amount: 4999,
-  description: 'Refund for order OrderRef6543'
-);
+  description: "Refund for order OrderRef6543"
+)
 ```
 </dd>
 </dl>
@@ -6126,21 +6126,21 @@ For referenced refunds, our gateway also returns details about the payment that 
 
 ```ruby
 client.card_payments.refunds.list(
-  processing_terminal_id: '1234001',
-  order_id: 'OrderRef6543',
-  operator: 'Jane',
-  cardholder_name: 'Sarah%20Hazel%20Hopper',
-  first_6: '453985',
-  last_4: '7062',
-  tender: 'ebt',
-  date_from: '2024-07-01T15:30:00Z',
-  date_to: '2024-07-03T15:30:00Z',
-  settlement_state: 'settled',
-  settlement_date: '2024-07-02',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  order_id: "OrderRef6543",
+  operator: "Jane",
+  cardholder_name: "Sarah%20Hazel%20Hopper",
+  first_6: "453985",
+  last_4: "7062",
+  tender: "ebt",
+  date_from: "2024-07-01T15:30:00Z",
+  date_to: "2024-07-03T15:30:00Z",
+  settlement_state: "settled",
+  settlement_date: "2024-07-02",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -6333,20 +6333,20 @@ In the response, our gateway returns information about the refund and a refundId
 
 ```ruby
 client.card_payments.refunds.create_unreferenced_refund(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  channel: 'pos',
-  processing_terminal_id: '1234001',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  channel: "pos",
+  processing_terminal_id: "1234001",
   order: {
-    order_id: 'OrderRef6543',
-    description: 'Refund for order OrderRef6543',
+    order_id: "OrderRef6543",
+    description: "Refund for order OrderRef6543",
     amount: 4999,
-    currency: 'USD'
+    currency: "USD"
   },
   custom_fields: [{
-    name: 'yourCustomField',
-    value: 'abc123'
+    name: "yourCustomField",
+    value: "abc123"
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -6489,7 +6489,7 @@ If the refund is a referenced refund, our gateway also returns details about the
 <dd>
 
 ```ruby
-client.card_payments.refunds.retrieve(refund_id: 'CD3HN88U9F');
+client.card_payments.refunds.retrieve(refund_id: "CD3HN88U9F")
 ```
 </dd>
 </dl>
@@ -6567,11 +6567,11 @@ If the refund is a referenced refund, our gateway also returns details about the
 
 ```ruby
 client.card_payments.refunds.adjust(
-  refund_id: 'CD3HN88U9F',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  operator: 'Jane',
+  refund_id: "CD3HN88U9F",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  operator: "Jane",
   adjustments: []
-);
+)
 ```
 </dd>
 </dl>
@@ -6670,9 +6670,9 @@ If your request is successful, the gateway removes the refund from the merchant�
 
 ```ruby
 client.card_payments.refunds.reverse_refund(
-  refund_id: 'CD3HN88U9F',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  refund_id: "CD3HN88U9F",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -6753,10 +6753,10 @@ For each funding recipient, we also return the recipientId, which you can use to
 
 ```ruby
 client.funding.funding_recipients.list(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -6853,54 +6853,54 @@ Our gateway returns the recipientId of the funding recipient, which you can use 
 
 ```ruby
 client.funding.funding_recipients.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  recipient_type: 'privateCorporation',
-  tax_id: '12-3456789',
-  doing_business_as: 'Pizza Doe',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  recipient_type: "privateCorporation",
+  tax_id: "12-3456789",
+  doing_business_as: "Pizza Doe",
   address: {
-    address_1: '1 Example Ave.',
-    address_2: 'Example Address Line 2',
-    address_3: 'Example Address Line 3',
-    city: 'Chicago',
-    state: 'Illinois',
-    country: 'US',
-    postal_code: '60056'
+    address_1: "1 Example Ave.",
+    address_2: "Example Address Line 2",
+    address_3: "Example Address Line 3",
+    city: "Chicago",
+    state: "Illinois",
+    country: "US",
+    postal_code: "60056"
   },
   contact_methods: [],
   metadata: {
-    yourCustomField: 'abc123'
+    yourCustomField: "abc123"
   },
   owners: [{
-    first_name: 'Jane',
-    middle_name: 'Helen',
-    last_name: 'Doe',
-    date_of_birth: '1964-03-22',
+    first_name: "Jane",
+    middle_name: "Helen",
+    last_name: "Doe",
+    date_of_birth: "1964-03-22",
     address: {
-      address_1: '1 Example Ave.',
-      city: 'Chicago',
-      state: 'Illinois',
-      country: 'US',
-      postal_code: '60056'
+      address_1: "1 Example Ave.",
+      city: "Chicago",
+      state: "Illinois",
+      country: "US",
+      postal_code: "60056"
     },
     identifiers: [{
-      type: 'nationalId',
-      value: '000-00-4320'
+      type: "nationalId",
+      value: "000-00-4320"
     }],
     contact_methods: [],
     relationship: {
       equity_percentage: 48.5,
-      title: 'CFO',
+      title: "CFO",
       is_control_prong: true,
       is_authorized_signatory: false
     }
   }],
   funding_accounts: [{
-    type: 'checking',
-    use: 'credit',
-    name_on_account: 'Jane Doe',
+    type: "checking",
+    use: "credit",
+    name_on_account: "Jane Doe",
     payment_methods: []
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -7054,7 +7054,7 @@ Our gateway returns the following information about the funding recipient:
 <dd>
 
 ```ruby
-client.funding.funding_recipients.retrieve(recipient_id: 1);
+client.funding.funding_recipients.retrieve(recipient_id: 1)
 ```
 </dd>
 </dl>
@@ -7127,40 +7127,40 @@ You can update the following details of a funding recipient:
 ```ruby
 client.funding.funding_recipients.update(
   recipient_id: 1,
-  recipient_type: 'privateCorporation',
-  tax_id: '12-3456789',
-  doing_business_as: 'Doe Hot Dogs',
+  recipient_type: "privateCorporation",
+  tax_id: "12-3456789",
+  doing_business_as: "Doe Hot Dogs",
   address: {
-    address_1: '2 Example Ave.',
-    address_2: 'Example Address Line 2',
-    address_3: 'Example Address Line 3',
-    city: 'Chicago',
-    state: 'Illinois',
-    country: 'US',
-    postal_code: '60056'
+    address_1: "2 Example Ave.",
+    address_2: "Example Address Line 2",
+    address_3: "Example Address Line 3",
+    city: "Chicago",
+    state: "Illinois",
+    country: "US",
+    postal_code: "60056"
   },
   contact_methods: [],
   metadata: {
-    responsiblePerson: 'Jane Doe'
+    responsiblePerson: "Jane Doe"
   },
   owners: [{
     owner_id: 12346,
     link: {
-      rel: 'owner',
-      href: 'https://api.payroc.com/v1/owners/12346',
-      method_: 'get'
+      rel: "owner",
+      href: "https://api.payroc.com/v1/owners/12346",
+      method_: "get"
     }
   }],
   funding_accounts: [{
     funding_account_id: 124,
-    status: 'approved',
+    status: "approved",
     link: {
-      rel: 'fundingAccount',
-      href: 'https://api.payroc.com/v1/funding-accounts/124',
-      method_: 'get'
+      rel: "fundingAccount",
+      href: "https://api.payroc.com/v1/funding-accounts/124",
+      method_: "get"
     }
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -7234,7 +7234,7 @@ To delete a funding recipient, you need its recipientId. Our gateway returned th
 <dd>
 
 ```ruby
-client.funding.funding_recipients.delete(recipient_id: 1);
+client.funding.funding_recipients.delete(recipient_id: 1)
 ```
 </dd>
 </dl>
@@ -7307,7 +7307,7 @@ Our gateway also returns the fundingAccountId, which you can use to run follow-o
 <dd>
 
 ```ruby
-client.funding.funding_recipients.list_accounts(recipient_id: 1);
+client.funding.funding_recipients.list_accounts(recipient_id: 1)
 ```
 </dd>
 </dl>
@@ -7382,15 +7382,15 @@ Our gateway returns the fundingAccountId, which you can use to run follow-on act
 ```ruby
 client.funding.funding_recipients.create_account(
   recipient_id: 1,
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  type: 'savings',
-  use: 'credit',
-  name_on_account: 'Fred Nerk',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  type: "savings",
+  use: "credit",
+  name_on_account: "Fred Nerk",
   payment_methods: [],
   metadata: {
-    responsiblePerson: 'Jane Doe'
+    responsiblePerson: "Jane Doe"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -7479,7 +7479,7 @@ Our gateway also returns the ownerId, which you can use to perform follow-on act
 <dd>
 
 ```ruby
-client.funding.funding_recipients.list_owners(recipient_id: 1);
+client.funding.funding_recipients.list_owners(recipient_id: 1)
 ```
 </dd>
 </dl>
@@ -7555,30 +7555,30 @@ In the response, our gateway returns the ownerId, which you can use to run follo
 ```ruby
 client.funding.funding_recipients.create_owner(
   recipient_id: 1,
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  first_name: 'Fred',
-  middle_name: 'Jim',
-  last_name: 'Nerk',
-  date_of_birth: '1980-01-19',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  first_name: "Fred",
+  middle_name: "Jim",
+  last_name: "Nerk",
+  date_of_birth: "1980-01-19",
   address: {
-    address_1: '2 Example Ave.',
-    city: 'Chicago',
-    state: 'Illinois',
-    country: 'US',
-    postal_code: '60056'
+    address_1: "2 Example Ave.",
+    city: "Chicago",
+    state: "Illinois",
+    country: "US",
+    postal_code: "60056"
   },
   identifiers: [{
-    type: 'nationalId',
-    value: '000-00-9876'
+    type: "nationalId",
+    value: "000-00-9876"
   }],
   contact_methods: [],
   relationship: {
     equity_percentage: 51.5,
-    title: 'CEO',
+    title: "CEO",
     is_control_prong: false,
     is_authorized_signatory: true
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -7667,10 +7667,10 @@ For each funding account, we also return the fundingAccountId, which you can use
 
 ```ruby
 client.funding.funding_accounts.list(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -7765,7 +7765,7 @@ Our gateway returns the following information about the funding account:
 <dd>
 
 ```ruby
-client.funding.funding_accounts.retrieve(funding_account_id: 1);
+client.funding.funding_accounts.retrieve(funding_account_id: 1)
 ```
 </dd>
 </dl>
@@ -7840,14 +7840,14 @@ You can update the following details about the funding account:
 ```ruby
 client.funding.funding_accounts.update(
   funding_account_id: 1,
-  type: 'savings',
-  use: 'credit',
-  name_on_account: 'Fred Nerk',
+  type: "savings",
+  use: "credit",
+  name_on_account: "Fred Nerk",
   payment_methods: [],
   metadata: {
-    responsiblePerson: 'Jane Doe'
+    responsiblePerson: "Jane Doe"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -7923,7 +7923,7 @@ To delete a funding account, you need its fundingAccountId. Our gateway returned
 <dd>
 
 ```ruby
-client.funding.funding_accounts.delete(funding_account_id: 1);
+client.funding.funding_accounts.delete(funding_account_id: 1)
 ```
 </dd>
 </dl>
@@ -7997,12 +7997,12 @@ For each funding instruction, we also return the instructionId, which you can us
 
 ```ruby
 client.funding.funding_instructions.list(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date_from: '2024-07-01',
-  date_to: '2024-07-03'
-);
+  date_from: "2024-07-01",
+  date_to: "2024-07-03"
+)
 ```
 </dd>
 </dl>
@@ -8114,25 +8114,25 @@ Our gateway returns the instructionId, which you can use to run follow-on action
 
 ```ruby
 client.funding.funding_instructions.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   merchants: [{
-    merchant_id: '4525644354',
+    merchant_id: "4525644354",
     recipients: [{
       funding_account_id: 123,
-      payment_method: 'ACH',
+      payment_method: "ACH",
       amount: {
         value: 120000,
-        currency: 'USD'
+        currency: "USD"
       },
       metadata: {
-        yourCustomField: 'abc123'
+        yourCustomField: "abc123"
       }
     }]
   }],
   metadata: {
-    yourCustomField: 'abc123'
+    yourCustomField: "abc123"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -8210,7 +8210,7 @@ Our gateway returns the following information about the funding instruction:
 <dd>
 
 ```ruby
-client.funding.funding_instructions.retrieve(instruction_id: 1);
+client.funding.funding_instructions.retrieve(instruction_id: 1)
 ```
 </dd>
 </dl>
@@ -8286,23 +8286,23 @@ You can modify the following information for the funding instruction:
 client.funding.funding_instructions.update(
   instruction_id: 1,
   merchants: [{
-    merchant_id: '9876543219',
+    merchant_id: "9876543219",
     recipients: [{
       funding_account_id: 124,
-      payment_method: 'ACH',
+      payment_method: "ACH",
       amount: {
         value: 69950,
-        currency: 'USD'
+        currency: "USD"
       },
       metadata: {
-        supplier: 'IT Support Services'
+        supplier: "IT Support Services"
       }
     }]
   }],
   metadata: {
-    instructionCreatedBy: 'Jane Doe'
+    instructionCreatedBy: "Jane Doe"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -8378,7 +8378,7 @@ To delete a funding instruction, you need its instructionId. Our gateway returne
 <dd>
 
 ```ruby
-client.funding.funding_instructions.delete(instruction_id: 1);
+client.funding.funding_instructions.delete(instruction_id: 1)
 ```
 </dd>
 </dl>
@@ -8449,11 +8449,11 @@ Our gateway returns the following information about each merchant in the list:
 
 ```ruby
 client.funding.funding_activity.retrieve_balance(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  merchant_id: '4525644354'
-);
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -8555,13 +8555,13 @@ Our gateway returns the following information about each activity in the list:
 
 ```ruby
 client.funding.funding_activity.list(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date_from: '2024-07-02',
-  date_to: '2024-07-03',
-  merchant_id: '4525644354'
-);
+  date_from: "2024-07-02",
+  date_to: "2024-07-03",
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -8685,9 +8685,9 @@ For each event subscription, we also return its id, which you can use to perform
 
 ```ruby
 client.notifications.event_subscriptions.list(
-  status: 'registered',
-  event: 'processingAccount.status.changed'
-);
+  status: "registered",
+  event: "processingAccount.status.changed"
+)
 ```
 </dd>
 </dl>
@@ -8762,12 +8762,12 @@ In the response, our gateway returns the id of the event subscription, which you
 
 ```ruby
 client.notifications.event_subscriptions.create(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   enabled: true,
-  event_types: ['processingAccount.status.changed'],
+  event_types: ["processingAccount.status.changed"],
   notifications: [],
   metadata: {}
-);
+)
 ```
 </dd>
 </dl>
@@ -8841,7 +8841,7 @@ In your request, include the subscriptionId that we sent to you when we created 
 <dd>
 
 ```ruby
-client.notifications.event_subscriptions.retrieve(subscription_id: 1);
+client.notifications.event_subscriptions.retrieve(subscription_id: 1)
 ```
 </dd>
 </dl>
@@ -8919,10 +8919,10 @@ You can update the following details about an event subscription:
 client.notifications.event_subscriptions.update(
   subscription_id: 1,
   enabled: true,
-  event_types: ['processingAccount.status.changed'],
+  event_types: ["processingAccount.status.changed"],
   notifications: [],
   metadata: {}
-);
+)
 ```
 </dd>
 </dl>
@@ -9001,7 +9001,7 @@ If you want to stop receiving event notifications but don't want to delete the e
 <dd>
 
 ```ruby
-client.notifications.event_subscriptions.delete(subscription_id: 1);
+client.notifications.event_subscriptions.delete(subscription_id: 1)
 ```
 </dd>
 </dl>
@@ -9077,9 +9077,9 @@ You can update the following properties of an event subscription:
 ```ruby
 client.notifications.event_subscriptions.partially_update(
   subscription_id: 1,
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   request: []
-);
+)
 ```
 </dd>
 </dl>
@@ -9166,10 +9166,10 @@ In the response, our gateway indicates if the card details are valid and if you 
 
 ```ruby
 client.payment_features.cards.verify_card(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  processing_terminal_id: '1234001',
-  operator: 'Jane'
-);
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  processing_terminal_id: "1234001",
+  operator: "Jane"
+)
 ```
 </dd>
 </dl>
@@ -9266,10 +9266,10 @@ If the request is successful, our gateway returns the current balance of an EBT 
 
 ```ruby
 client.payment_features.cards.view_ebt_balance(
-  processing_terminal_id: '1234001',
-  operator: 'Jane',
-  currency: 'USD'
-);
+  processing_terminal_id: "1234001",
+  operator: "Jane",
+  currency: "USD"
+)
 ```
 </dd>
 </dl>
@@ -9375,7 +9375,7 @@ In the response, our gateway returns the following information about the card:
 <dd>
 
 ```ruby
-client.payment_features.cards.lookup_bin(processing_terminal_id: '1234001');
+client.payment_features.cards.lookup_bin(processing_terminal_id: "1234001")
 ```
 </dd>
 </dl>
@@ -9485,12 +9485,12 @@ If the card is eligible for DCC, our gateway returns the transaction amount in t
 
 ```ruby
 client.payment_features.cards.retrieve_fx_rates(
-  channel: 'web',
-  processing_terminal_id: '1234001',
-  operator: 'Jane',
+  channel: "web",
+  processing_terminal_id: "1234001",
+  operator: "Jane",
   base_amount: 10000,
-  base_currency: 'USD'
-);
+  base_currency: "USD"
+)
 ```
 </dd>
 </dl>
@@ -9608,9 +9608,9 @@ In the response, our gateway indicates if the account details are valid and if y
 
 ```ruby
 client.payment_features.bank.verify(
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  processing_terminal_id: '1234001'
-);
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  processing_terminal_id: "1234001"
+)
 ```
 </dd>
 </dl>
@@ -9706,13 +9706,13 @@ Our gateway returns the following information for each sharing event in the list
 
 ```ruby
 client.payment_links.sharing_events.list(
-  payment_link_id: 'JZURRJBUPS',
-  recipient_name: 'Sarah Hazel Hopper',
-  recipient_email: 'sarah.hopper@example.com',
-  before: '2571',
-  after: '8516',
+  payment_link_id: "JZURRJBUPS",
+  recipient_name: "Sarah Hazel Hopper",
+  recipient_email: "sarah.hopper@example.com",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -9831,20 +9831,20 @@ In the response, our gateway returns a sharingEventId, which you can use to [Lis
 
 ```ruby
 client.payment_links.sharing_events.share(
-  payment_link_id: 'JZURRJBUPS',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  sharing_method: 'email',
+  payment_link_id: "JZURRJBUPS",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  sharing_method: "email",
   merchant_copy: true,
-  message: 'Dear Sarah,
+  message: "Dear Sarah,
   
   Your insurance is expiring this month.
   Please, pay the renewal fee by the end of the month to renew it.
-  ',
+  ",
   recipients: [{
-    name: 'Sarah Hazel Hopper',
-    email: 'sarah.hopper@example.com'
+    name: "Sarah Hazel Hopper",
+    email: "sarah.hopper@example.com"
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -9930,20 +9930,20 @@ When you send a successful request, our gateway returns information about the pa
 
 ```ruby
 client.payroc_cloud.payment_instructions.submit(
-  serial_number: '1850010868',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  operator: 'Jane',
-  processing_terminal_id: '1234001',
+  serial_number: "1850010868",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  operator: "Jane",
+  processing_terminal_id: "1234001",
   order: {
-    order_id: 'OrderRef6543',
+    order_id: "OrderRef6543",
     amount: 4999,
-    currency: 'USD'
+    currency: "USD"
   },
   customization_options: {
-    entry_method: 'deviceRead'
+    entry_method: "deviceRead"
   },
   auto_capture: true
-);
+)
 ```
 </dd>
 </dl>
@@ -10099,7 +10099,7 @@ Our gateway returns the status of the payment instruction. If the payment device
 <dd>
 
 ```ruby
-client.payroc_cloud.payment_instructions.retrieve(payment_instruction_id: 'e743a9165d134678a9100ebba3b29597');
+client.payroc_cloud.payment_instructions.retrieve(payment_instruction_id: "e743a9165d134678a9100ebba3b29597")
 ```
 </dd>
 </dl>
@@ -10165,7 +10165,7 @@ To cancel a payment instruction, you need its paymentInstructionId. Our gateway 
 <dd>
 
 ```ruby
-client.payroc_cloud.payment_instructions.delete(payment_instruction_id: 'e743a9165d134678a9100ebba3b29597');
+client.payroc_cloud.payment_instructions.delete(payment_instruction_id: "e743a9165d134678a9100ebba3b29597")
 ```
 </dd>
 </dl>
@@ -10235,20 +10235,20 @@ If the request is successful, our gateway returns information about the refund i
 
 ```ruby
 client.payroc_cloud.refund_instructions.submit(
-  serial_number: '1850010868',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  operator: 'Jane',
-  processing_terminal_id: '1234001',
+  serial_number: "1850010868",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  operator: "Jane",
+  processing_terminal_id: "1234001",
   order: {
-    order_id: 'OrderRef6543',
-    description: 'Refund for order OrderRef6543',
+    order_id: "OrderRef6543",
+    description: "Refund for order OrderRef6543",
     amount: 4999,
-    currency: 'USD'
+    currency: "USD"
   },
   customization_options: {
-    entry_method: 'manualEntry'
+    entry_method: "manualEntry"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -10370,7 +10370,7 @@ Our gateway returns the status of the refund instruction. If the payment device 
 <dd>
 
 ```ruby
-client.payroc_cloud.refund_instructions.retrieve(refund_instruction_id: 'a37439165d134678a9100ebba3b29597');
+client.payroc_cloud.refund_instructions.retrieve(refund_instruction_id: "a37439165d134678a9100ebba3b29597")
 ```
 </dd>
 </dl>
@@ -10436,7 +10436,7 @@ To cancel a refund instruction, you need its refundInstructionId. Our gateway re
 <dd>
 
 ```ruby
-client.payroc_cloud.refund_instructions.delete(refund_instruction_id: 'a37439165d134678a9100ebba3b29597');
+client.payroc_cloud.refund_instructions.delete(refund_instruction_id: "a37439165d134678a9100ebba3b29597")
 ```
 </dd>
 </dl>
@@ -10504,10 +10504,10 @@ Our gateway returns information about the signature instruction and a signatureI
 
 ```ruby
 client.payroc_cloud.signature_instructions.submit(
-  serial_number: '1850010868',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  processing_terminal_id: '1234001'
-);
+  serial_number: "1850010868",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  processing_terminal_id: "1234001"
+)
 ```
 </dd>
 </dl>
@@ -10589,7 +10589,7 @@ Our gateway returns the status of the instruction. If the payment device complet
 <dd>
 
 ```ruby
-client.payroc_cloud.signature_instructions.retrieve(signature_instruction_id: 'a37439165d134678a9100ebba3b29597');
+client.payroc_cloud.signature_instructions.retrieve(signature_instruction_id: "a37439165d134678a9100ebba3b29597")
 ```
 </dd>
 </dl>
@@ -10653,7 +10653,7 @@ To cancel a signature instruction, you need its signatureInstructionId. Our gate
 <dd>
 
 ```ruby
-client.payroc_cloud.signature_instructions.delete(signature_instruction_id: 'a37439165d134678a9100ebba3b29597');
+client.payroc_cloud.signature_instructions.delete(signature_instruction_id: "a37439165d134678a9100ebba3b29597")
 ```
 </dd>
 </dl>
@@ -10721,7 +10721,7 @@ Our gateway returns the following information about the signature:
 <dd>
 
 ```ruby
-client.payroc_cloud.signatures.retrieve(signature_id: 'JDN4ILZB0T');
+client.payroc_cloud.signatures.retrieve(signature_id: "JDN4ILZB0T")
 ```
 </dd>
 </dl>
@@ -10796,11 +10796,11 @@ For each payment plan, we return the paymentPlanId, which you can use to perform
 
 ```ruby
 client.repeat_payments.payment_plans.list(
-  processing_terminal_id: '1234001',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -10911,41 +10911,41 @@ The request includes the following settings:
 
 ```ruby
 client.repeat_payments.payment_plans.create(
-  processing_terminal_id: '1234001',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  payment_plan_id: 'PlanRef8765',
-  name: 'Premium Club',
-  description: 'Monthly Premium Club subscription',
-  currency: 'USD',
+  processing_terminal_id: "1234001",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  payment_plan_id: "PlanRef8765",
+  name: "Premium Club",
+  description: "Monthly Premium Club subscription",
+  currency: "USD",
   length: 12,
-  type: 'automatic',
-  frequency: 'monthly',
-  on_update: 'continue',
-  on_delete: 'complete',
-  custom_field_names: ['yourCustomField'],
+  type: "automatic",
+  frequency: "monthly",
+  on_update: "continue",
+  on_delete: "complete",
+  custom_field_names: ["yourCustomField"],
   setup_order: {
     amount: 4999,
-    description: 'Initial setup fee for Premium Club subscription',
+    description: "Initial setup fee for Premium Club subscription",
     breakdown: {
       subtotal: 4347,
       taxes: [{
-        name: 'Sales Tax',
+        name: "Sales Tax",
         rate: 5
       }]
     }
   },
   recurring_order: {
     amount: 4999,
-    description: 'Monthly Premium Club subscription',
+    description: "Monthly Premium Club subscription",
     breakdown: {
       subtotal: 4347,
       taxes: [{
-        name: 'Sales Tax',
+        name: "Sales Tax",
         rate: 5
       }]
     }
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -11035,9 +11035,9 @@ Our gateway returns the following information about the payment plan:
 
 ```ruby
 client.repeat_payments.payment_plans.retrieve(
-  processing_terminal_id: '1234001',
-  payment_plan_id: 'PlanRef8765'
-);
+  processing_terminal_id: "1234001",
+  payment_plan_id: "PlanRef8765"
+)
 ```
 </dd>
 </dl>
@@ -11119,9 +11119,9 @@ The value you sent for the onDelete parameter when you created the payment plan 
 
 ```ruby
 client.repeat_payments.payment_plans.delete(
-  processing_terminal_id: '1234001',
-  payment_plan_id: 'PlanRef8765'
-);
+  processing_terminal_id: "1234001",
+  payment_plan_id: "PlanRef8765"
+)
 ```
 </dd>
 </dl>
@@ -11202,11 +11202,11 @@ The value you sent for the onUpdate parameter when you created the payment plan 
 
 ```ruby
 client.repeat_payments.payment_plans.partially_update(
-  processing_terminal_id: '1234001',
-  payment_plan_id: 'PlanRef8765',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  processing_terminal_id: "1234001",
+  payment_plan_id: "PlanRef8765",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   request: []
-);
+)
 ```
 </dd>
 </dl>
@@ -11308,18 +11308,18 @@ For each subscription, we also return the subscriptionId, the paymentPlanId, and
 
 ```ruby
 client.repeat_payments.subscriptions.list(
-  processing_terminal_id: '1234001',
-  customer_name: 'Sarah%20Hazel%20Hopper',
-  last_4: '7062',
-  payment_plan: 'Premium%20Club',
-  frequency: 'weekly',
-  status: 'active',
-  end_date: '2025-07-01',
-  next_due_date: '2024-08-01',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  customer_name: "Sarah%20Hazel%20Hopper",
+  last_4: "7062",
+  payment_plan: "Premium%20Club",
+  frequency: "weekly",
+  status: "active",
+  end_date: "2025-07-01",
+  next_due_date: "2024-08-01",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -11493,34 +11493,34 @@ You can also update the settings that the subscription inherited from the paymen
 
 ```ruby
 client.repeat_payments.subscriptions.create(
-  processing_terminal_id: '1234001',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  subscription_id: 'SubRef7654',
-  payment_plan_id: 'PlanRef8765',
-  name: 'Premium Club',
-  description: 'Premium Club subscription',
+  processing_terminal_id: "1234001",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  subscription_id: "SubRef7654",
+  payment_plan_id: "PlanRef8765",
+  name: "Premium Club",
+  description: "Premium Club subscription",
   setup_order: {
-    order_id: 'OrderRef6543',
+    order_id: "OrderRef6543",
     amount: 4999,
-    description: 'Initial setup fee for Premium Club subscription'
+    description: "Initial setup fee for Premium Club subscription"
   },
   recurring_order: {
     amount: 4999,
-    description: 'Monthly Premium Club subscription',
+    description: "Monthly Premium Club subscription",
     breakdown: {
       subtotal: 4347,
       taxes: [{
-        type: 'rate',
+        type: "rate",
         rate: 5,
-        name: 'Sales Tax'
+        name: "Sales Tax"
       }]
     }
   },
-  start_date: '2024-07-02',
-  end_date: '2025-07-01',
+  start_date: "2024-07-02",
+  end_date: "2025-07-01",
   length: 12,
   pause_collection_for: 0
-);
+)
 ```
 </dd>
 </dl>
@@ -11723,9 +11723,9 @@ We also return the paymentPlanId and the secureTokenId, which you can use to per
 
 ```ruby
 client.repeat_payments.subscriptions.retrieve(
-  processing_terminal_id: '1234001',
-  subscription_id: 'SubRef7654'
-);
+  processing_terminal_id: "1234001",
+  subscription_id: "SubRef7654"
+)
 ```
 </dd>
 </dl>
@@ -11813,11 +11813,11 @@ You can update all of the properties of the subscription except for the followin
 
 ```ruby
 client.repeat_payments.subscriptions.partially_update(
-  processing_terminal_id: '1234001',
-  subscription_id: 'SubRef7654',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  processing_terminal_id: "1234001",
+  subscription_id: "SubRef7654",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   request: []
-);
+)
 ```
 </dd>
 </dl>
@@ -11912,9 +11912,9 @@ To reactivate the subscription, use our [Reactivate Subscription](https://docs.p
 
 ```ruby
 client.repeat_payments.subscriptions.deactivate(
-  processing_terminal_id: '1234001',
-  subscription_id: 'SubRef7654'
-);
+  processing_terminal_id: "1234001",
+  subscription_id: "SubRef7654"
+)
 ```
 </dd>
 </dl>
@@ -11993,9 +11993,9 @@ To deactivate the subscription, use our [Deactivate Subscription](https://docs.p
 
 ```ruby
 client.repeat_payments.subscriptions.reactivate(
-  processing_terminal_id: '1234001',
-  subscription_id: 'SubRef7654'
-);
+  processing_terminal_id: "1234001",
+  subscription_id: "SubRef7654"
+)
 ```
 </dd>
 </dl>
@@ -12074,16 +12074,16 @@ In the response, our gateway returns information about the payment and a payment
 
 ```ruby
 client.repeat_payments.subscriptions.pay(
-  processing_terminal_id: '1234001',
-  subscription_id: 'SubRef7654',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  operator: 'Jane',
+  processing_terminal_id: "1234001",
+  subscription_id: "SubRef7654",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  operator: "Jane",
   order: {
-    order_id: 'OrderRef6543',
+    order_id: "OrderRef6543",
     amount: 4999,
-    description: 'Monthly Premium Club subscription'
+    description: "Monthly Premium Club subscription"
   }
-);
+)
 ```
 </dd>
 </dl>
@@ -12197,12 +12197,12 @@ Our gateway returns the following information about each batch in the list:
 
 ```ruby
 client.reporting.settlement.list_batches(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date: '2027-07-02',
-  merchant_id: '4525644354'
-);
+  date: "2027-07-02",
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -12311,7 +12311,7 @@ Our gateway returns the following information about the batch:
 <dd>
 
 ```ruby
-client.reporting.settlement.retrieve_batch(batch_id: 1);
+client.reporting.settlement.retrieve_batch(batch_id: 1)
 ```
 </dd>
 </dl>
@@ -12387,14 +12387,14 @@ Our gateway returns the following information about each transaction in the list
 
 ```ruby
 client.reporting.settlement.list_transactions(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date: '2024-07-02',
+  date: "2024-07-02",
   batch_id: 1,
-  merchant_id: '4525644354',
-  transaction_type: 'Capture'
-);
+  merchant_id: "4525644354",
+  transaction_type: "Capture"
+)
 ```
 </dd>
 </dl>
@@ -12529,7 +12529,7 @@ Our gateway returns the following information about the transaction:
 <dd>
 
 ```ruby
-client.reporting.settlement.retrieve_transaction(transaction_id: 1);
+client.reporting.settlement.retrieve_transaction(transaction_id: 1)
 ```
 </dd>
 </dl>
@@ -12602,13 +12602,13 @@ Our gateway returns the following information about each authorization in the li
 
 ```ruby
 client.reporting.settlement.list_authorizations(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date: '2024-07-02',
+  date: "2024-07-02",
   batch_id: 1,
-  merchant_id: '4525644354'
-);
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -12734,7 +12734,7 @@ Our gateway returns the following information about the authorization:
 <dd>
 
 ```ruby
-client.reporting.settlement.retrieve_authorization(authorization_id: 1);
+client.reporting.settlement.retrieve_authorization(authorization_id: 1)
 ```
 </dd>
 </dl>
@@ -12805,12 +12805,12 @@ Our gateway returns the following information about each dispute in the list:
 
 ```ruby
 client.reporting.settlement.list_disputes(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date: '2024-07-02',
-  merchant_id: '4525644354'
-);
+  date: "2024-07-02",
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -12916,7 +12916,7 @@ Our gateway returns a list that contains each status change, the date it was cha
 <dd>
 
 ```ruby
-client.reporting.settlement.list_disputes_statuses(dispute_id: 1);
+client.reporting.settlement.list_disputes_statuses(dispute_id: 1)
 ```
 </dd>
 </dl>
@@ -12990,12 +12990,12 @@ Our gateway returns the following information about each ACH deposit in the list
 
 ```ruby
 client.reporting.settlement.list_ach_deposits(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date: '2024-07-02',
-  merchant_id: '4525644354'
-);
+  date: "2024-07-02",
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -13105,7 +13105,7 @@ Our gateway returns the following information about the ACH deposit:
 <dd>
 
 ```ruby
-client.reporting.settlement.retrieve_ach_deposit(ach_deposit_id: 1);
+client.reporting.settlement.retrieve_ach_deposit(ach_deposit_id: 1)
 ```
 </dd>
 </dl>
@@ -13170,13 +13170,13 @@ Retrieve a list of ACH deposit fees.
 
 ```ruby
 client.reporting.settlement.list_ach_deposit_fees(
-  before: '2571',
-  after: '8516',
+  before: "2571",
+  after: "8516",
   limit: 1,
-  date: '2024-07-02',
+  date: "2024-07-02",
   ach_deposit_id: 1,
-  merchant_id: '4525644354'
-);
+  merchant_id: "4525644354"
+)
 ```
 </dd>
 </dl>
@@ -13300,18 +13300,18 @@ Our gateway returns information about the following for each secure token in the
 
 ```ruby
 client.tokenization.secure_tokens.list(
-  processing_terminal_id: '1234001',
-  secure_token_id: 'MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa',
-  customer_name: 'Sarah%20Hazel%20Hopper',
-  phone: '2025550165',
-  email: 'sarah.hopper@example.com',
-  token: '296753123456',
-  first_6: '453985',
-  last_4: '7062',
-  before: '2571',
-  after: '8516',
+  processing_terminal_id: "1234001",
+  secure_token_id: "MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa",
+  customer_name: "Sarah%20Hazel%20Hopper",
+  phone: "2025550165",
+  email: "sarah.hopper@example.com",
+  token: "296753123456",
+  first_6: "453985",
+  last_4: "7062",
+  before: "2571",
+  after: "8516",
   limit: 1
-);
+)
 ```
 </dd>
 </dl>
@@ -13472,48 +13472,48 @@ If the request is successful, our gateway returns a token that the merchant can 
 
 ```ruby
 client.tokenization.secure_tokens.create(
-  processing_terminal_id: '1234001',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  operator: 'Jane',
-  mit_agreement: 'unscheduled',
+  processing_terminal_id: "1234001",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  operator: "Jane",
+  mit_agreement: "unscheduled",
   customer: {
-    first_name: 'Sarah',
-    last_name: 'Hopper',
-    date_of_birth: '1990-07-15',
-    reference_number: 'Customer-12',
+    first_name: "Sarah",
+    last_name: "Hopper",
+    date_of_birth: "1990-07-15",
+    reference_number: "Customer-12",
     billing_address: {
-      address_1: '1 Example Ave.',
-      address_2: 'Example Address Line 2',
-      address_3: 'Example Address Line 3',
-      city: 'Chicago',
-      state: 'Illinois',
-      country: 'US',
-      postal_code: '60056'
+      address_1: "1 Example Ave.",
+      address_2: "Example Address Line 2",
+      address_3: "Example Address Line 3",
+      city: "Chicago",
+      state: "Illinois",
+      country: "US",
+      postal_code: "60056"
     },
     shipping_address: {
-      recipient_name: 'Sarah Hopper',
+      recipient_name: "Sarah Hopper",
       address: {
-        address_1: '1 Example Ave.',
-        address_2: 'Example Address Line 2',
-        address_3: 'Example Address Line 3',
-        city: 'Chicago',
-        state: 'Illinois',
-        country: 'US',
-        postal_code: '60056'
+        address_1: "1 Example Ave.",
+        address_2: "Example Address Line 2",
+        address_3: "Example Address Line 3",
+        city: "Chicago",
+        state: "Illinois",
+        country: "US",
+        postal_code: "60056"
       }
     },
     contact_methods: [],
-    notification_language: 'en'
+    notification_language: "en"
   },
   ip_address: {
-    type: 'ipv4',
-    value: '104.18.24.203'
+    type: "ipv4",
+    value: "104.18.24.203"
   },
   custom_fields: [{
-    name: 'yourCustomField',
-    value: 'abc123'
+    name: "yourCustomField",
+    value: "abc123"
   }]
-);
+)
 ```
 </dd>
 </dl>
@@ -13681,9 +13681,9 @@ Our gateway returns the following information about the secure token:
 
 ```ruby
 client.tokenization.secure_tokens.retrieve(
-  processing_terminal_id: '1234001',
-  secure_token_id: 'MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa'
-);
+  processing_terminal_id: "1234001",
+  secure_token_id: "MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa"
+)
 ```
 </dd>
 </dl>
@@ -13760,9 +13760,9 @@ When you delete a secure token, you can’t recover it, and you can’t reuse it
 
 ```ruby
 client.tokenization.secure_tokens.delete(
-  processing_terminal_id: '1234001',
-  secure_token_id: 'MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa'
-);
+  processing_terminal_id: "1234001",
+  secure_token_id: "MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa"
+)
 ```
 </dd>
 </dl>
@@ -13857,11 +13857,11 @@ You can update all of the properties of the secure token, except the following:
 
 ```ruby
 client.tokenization.secure_tokens.partially_update(
-  processing_terminal_id: '1234001',
-  secure_token_id: 'MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
+  processing_terminal_id: "1234001",
+  secure_token_id: "MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
   request: []
-);
+)
 ```
 </dd>
 </dl>
@@ -13950,10 +13950,10 @@ Use this method to update a secure token if you have a single-use token from Hos
 
 ```ruby
 client.tokenization.secure_tokens.update_account(
-  processing_terminal_id: '1234001',
-  secure_token_id: 'MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324'
-);
+  processing_terminal_id: "1234001",
+  secure_token_id: "MREF_abc1de23-f4a5-6789-bcd0-12e345678901fa",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324"
+)
 ```
 </dd>
 </dl>
@@ -14047,11 +14047,11 @@ In the request, send the customer’s payment details. If the request is success
 
 ```ruby
 client.tokenization.single_use_tokens.create(
-  processing_terminal_id: '1234001',
-  idempotency_key: '8e03978e-40d5-43e8-bc93-6894a57f9324',
-  channel: 'web',
-  operator: 'Jane'
-);
+  processing_terminal_id: "1234001",
+  idempotency_key: "8e03978e-40d5-43e8-bc93-6894a57f9324",
+  channel: "web",
+  operator: "Jane"
+)
 ```
 </dd>
 </dl>
