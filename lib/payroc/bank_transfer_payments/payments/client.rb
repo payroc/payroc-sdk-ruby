@@ -136,8 +136,9 @@ module Payroc
         # @return [Payroc::Types::BankTransferPayment]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[processing_terminal_id order customer credential_on_file payment_method custom_fields]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::BankTransferPayments::Payments::Types::BankTransferPaymentRequest.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -147,7 +148,7 @@ module Payroc
             method: "POST",
             path: "bank-transfer-payments",
             headers: headers,
-            body: Payroc::BankTransferPayments::Payments::Types::BankTransferPaymentRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -244,10 +245,9 @@ module Payroc
         # @return [Payroc::Types::BankTransferPayment]
         def represent(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[payment_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[payment_method]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::BankTransferPayments::Payments::Types::Representment.new(params).to_h
+          non_body_param_names = %w[paymentId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -257,7 +257,7 @@ module Payroc
             method: "POST",
             path: "bank-transfer-payments/#{params[:payment_id]}/represent",
             headers: headers,
-            body: Payroc::BankTransferPayments::Payments::Types::Representment.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

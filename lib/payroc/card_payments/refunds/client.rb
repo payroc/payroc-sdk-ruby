@@ -40,10 +40,9 @@ module Payroc
         # @return [Payroc::Types::Payment]
         def reverse(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[payment_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[operator amount]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Refunds::Types::PaymentReversal.new(params).to_h
+          non_body_param_names = %w[paymentId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -53,7 +52,7 @@ module Payroc
             method: "POST",
             path: "payments/#{params[:payment_id]}/reverse",
             headers: headers,
-            body: Payroc::CardPayments::Refunds::Types::PaymentReversal.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -100,10 +99,9 @@ module Payroc
         # @return [Payroc::Types::Payment]
         def create_referenced_refund(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[payment_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[operator amount description]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Refunds::Types::ReferencedRefund.new(params).to_h
+          non_body_param_names = %w[paymentId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -113,7 +111,7 @@ module Payroc
             method: "POST",
             path: "payments/#{params[:payment_id]}/refund",
             headers: headers,
-            body: Payroc::CardPayments::Refunds::Types::ReferencedRefund.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -248,8 +246,9 @@ module Payroc
         # @return [Payroc::Types::RetrievedRefund]
         def create_unreferenced_refund(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[channel processing_terminal_id operator order customer ip_address refund_method custom_fields]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Refunds::Types::UnreferencedRefund.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -259,7 +258,7 @@ module Payroc
             method: "POST",
             path: "refunds",
             headers: headers,
-            body: Payroc::CardPayments::Refunds::Types::UnreferencedRefund.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -359,10 +358,9 @@ module Payroc
         # @return [Payroc::Types::RetrievedRefund]
         def adjust(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[refund_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[operator adjustments]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::CardPayments::Refunds::Types::RefundAdjustment.new(params).to_h
+          non_body_param_names = %w[refundId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -372,7 +370,7 @@ module Payroc
             method: "POST",
             path: "refunds/#{params[:refund_id]}/adjust",
             headers: headers,
-            body: Payroc::CardPayments::Refunds::Types::RefundAdjustment.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

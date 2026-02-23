@@ -143,10 +143,9 @@ module Payroc
         # @return [Payroc::Types::Subscription]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[processing_terminal_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[subscription_id payment_plan_id payment_method name description setup_order recurring_order start_date end_date length pause_collection_for custom_fields]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::RepeatPayments::Subscriptions::Types::SubscriptionRequest.new(params).to_h
+          non_body_param_names = %w[processingTerminalId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -156,7 +155,7 @@ module Payroc
             method: "POST",
             path: "processing-terminals/#{params[:processing_terminal_id]}/subscriptions",
             headers: headers,
-            body: Payroc::RepeatPayments::Subscriptions::Types::SubscriptionRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
@@ -415,10 +414,9 @@ module Payroc
         # @return [Payroc::Types::SubscriptionPayment]
         def pay(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          path_param_names = %i[processing_terminal_id subscription_id]
-          body_params = params.except(*path_param_names)
-          body_prop_names = %i[operator order custom_fields]
-          body_bag = body_params.slice(*body_prop_names)
+          request_data = Payroc::RepeatPayments::Subscriptions::Types::SubscriptionPaymentRequest.new(params).to_h
+          non_body_param_names = %w[processingTerminalId subscriptionId Idempotency-Key]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -428,7 +426,7 @@ module Payroc
             method: "POST",
             path: "processing-terminals/#{params[:processing_terminal_id]}/subscriptions/#{params[:subscription_id]}/pay",
             headers: headers,
-            body: Payroc::RepeatPayments::Subscriptions::Types::SubscriptionPaymentRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

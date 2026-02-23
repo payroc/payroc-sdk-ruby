@@ -101,8 +101,9 @@ module Payroc
         # @return [Payroc::Types::FundingRecipient]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[recipient_type tax_id charity_id doing_business_as address contact_methods metadata owners funding_accounts]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::Funding::FundingRecipients::Types::CreateFundingRecipient.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -112,7 +113,7 @@ module Payroc
             method: "POST",
             path: "funding-recipients",
             headers: headers,
-            body: Payroc::Funding::FundingRecipients::Types::CreateFundingRecipient.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin

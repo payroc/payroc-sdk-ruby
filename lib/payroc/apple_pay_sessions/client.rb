@@ -34,16 +34,15 @@ module Payroc
       # @return [Payroc::Types::ApplePayResponseSession]
       def create(request_options: {}, **params)
         params = Payroc::Internal::Types::Utils.normalize_keys(params)
-        path_param_names = %i[processing_terminal_id]
-        body_params = params.except(*path_param_names)
-        body_prop_names = %i[apple_domain_id apple_validation_url]
-        body_bag = body_params.slice(*body_prop_names)
+        request_data = Payroc::ApplePaySessions::Types::ApplePaySessions.new(params).to_h
+        non_body_param_names = ["processingTerminalId"]
+        body = request_data.except(*non_body_param_names)
 
         request = Payroc::Internal::JSON::Request.new(
           base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
           method: "POST",
           path: "processing-terminals/#{params[:processing_terminal_id]}/apple-pay-sessions",
-          body: Payroc::ApplePaySessions::Types::ApplePaySessions.new(body_bag).to_h,
+          body: body,
           request_options: request_options
         )
         begin

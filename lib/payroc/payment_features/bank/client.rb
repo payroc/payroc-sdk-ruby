@@ -38,8 +38,9 @@ module Payroc
         # @return [Payroc::Types::BankAccountVerificationResult]
         def verify(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
-          body_prop_names = %i[processing_terminal_id bank_account]
-          body_bag = params.slice(*body_prop_names)
+          request_data = Payroc::PaymentFeatures::Bank::Types::BankAccountVerificationRequest.new(params).to_h
+          non_body_param_names = ["Idempotency-Key"]
+          body = request_data.except(*non_body_param_names)
 
           headers = {}
           headers["Idempotency-Key"] = params[:idempotency_key] if params[:idempotency_key]
@@ -49,7 +50,7 @@ module Payroc
             method: "POST",
             path: "bank-accounts/verify",
             headers: headers,
-            body: Payroc::PaymentFeatures::Bank::Types::BankAccountVerificationRequest.new(body_bag).to_h,
+            body: body,
             request_options: request_options
           )
           begin
