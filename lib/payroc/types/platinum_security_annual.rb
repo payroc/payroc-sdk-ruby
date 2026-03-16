@@ -2,7 +2,7 @@
 
 module Payroc
   module Types
-    class BaseUsAnnual < Internal::Types::Model
+    class PlatinumSecurityAnnual < Internal::Types::Model
       field :amount, -> { Integer }, optional: true, nullable: false
     end
   end

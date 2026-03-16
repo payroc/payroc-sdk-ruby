@@ -12,8 +12,8 @@ module Payroc
 
       discriminant :billing_frequency
 
-      member -> { Payroc::Types::BaseUsMonthly }, key: "MONTHLY"
-      member -> { Payroc::Types::BaseUsAnnual }, key: "ANNUAL"
+      member -> { Payroc::Types::PlatinumSecurityMonthly }, key: "MONTHLY"
+      member -> { Payroc::Types::PlatinumSecurityAnnual }, key: "ANNUAL"
     end
   end
 end

@@ -10,7 +10,7 @@ module Payroc
       field :base_currency, -> { Payroc::Types::Currency }, optional: false, nullable: false, api_name: "baseCurrency"
       field :inquiry_result, -> { Payroc::Types::FxRateInquiryResult }, optional: false, nullable: false, api_name: "inquiryResult"
       field :dcc_offer, -> { Payroc::Types::DccOffer }, optional: true, nullable: false, api_name: "dccOffer"
-      field :card_info, -> { Payroc::Types::CardInfo }, optional: false, nullable: false, api_name: "cardInfo"
+      field :card_info, -> { Payroc::Types::CardInfo }, optional: true, nullable: false, api_name: "cardInfo"
     end
   end
 end

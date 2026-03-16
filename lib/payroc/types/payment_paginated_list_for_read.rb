@@ -3,7 +3,7 @@
 module Payroc
   module Types
     class PaymentPaginatedListForRead < Internal::Types::Model
-      field :data, -> { Internal::Types::Array[Payroc::Types::RetrievedPayment] }, optional: true, nullable: false
+      field :data, -> { Internal::Types::Array[Payroc::Types::RetrievedPayment] }, optional: false, nullable: false
     end
   end
 end

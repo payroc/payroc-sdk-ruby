@@ -3,7 +3,7 @@
 module Payroc
   module Types
     class RefundInstruction < Internal::Types::Model
-      field :refund_instruction_id, -> { String }, optional: true, nullable: false, api_name: "refundInstructionId"
+      field :refund_instruction_id, -> { String }, optional: false, nullable: false, api_name: "refundInstructionId"
     end
   end
 end

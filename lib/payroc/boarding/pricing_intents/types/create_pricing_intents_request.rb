@@ -6,7 +6,7 @@ module Payroc
       module Types
         class CreatePricingIntentsRequest < Internal::Types::Model
           field :idempotency_key, -> { String }, optional: false, nullable: false, api_name: "Idempotency-Key"
-          field :body, -> { Payroc::Types::PricingIntent50 }, optional: false, nullable: false
+          field :body, -> { Payroc::Types::PricingIntent52 }, optional: false, nullable: false
         end
       end
     end

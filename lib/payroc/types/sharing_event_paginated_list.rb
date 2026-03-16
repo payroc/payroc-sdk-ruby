@@ -3,7 +3,7 @@
 module Payroc
   module Types
     class SharingEventPaginatedList < Internal::Types::Model
-      field :data, -> { Internal::Types::Array[Payroc::Types::PaymentLinkEmailShareEvent] }, optional: true, nullable: false
+      field :data, -> { Internal::Types::Array[Payroc::Types::PaymentLinkEmailShareEvent] }, optional: false, nullable: false
     end
   end
 end
