@@ -3,7 +3,7 @@
 module Payroc
   module Types
     module PricingIntent
-      # PricingIntent is an alias for PricingIntent50
+      # PricingIntent is an alias for PricingIntent52
 
       # @option str [String]
       #

@@ -6,7 +6,7 @@ This directory contains integration tests that run against the Payroc UAT enviro
 
 Before running integration tests, you need to set the following environment variables:
 
-- `PAYROC_API_KEY_PAYMENTS` - API key for payment operations
+- `PAYROC_API_KEY_PAYMENTS` - API key for payment operations (falls back to `PAYROC_API_KEY` if not set)
 - `TERMINAL_ID_AVS` - Terminal ID with AVS enabled
 - `TERMINAL_ID_NO_AVS` - Terminal ID without AVS (optional, for future tests)
 

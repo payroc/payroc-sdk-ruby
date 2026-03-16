@@ -9,7 +9,7 @@ module Payroc
       field :customer, -> { Payroc::Types::BankTransferCustomer }, optional: true, nullable: false
       field :bank_account, -> { Payroc::Types::BankTransferRefundBankAccount }, optional: false, nullable: false, api_name: "bankAccount"
       field :payment, -> { Payroc::Types::PaymentSummary }, optional: true, nullable: false
-      field :transaction_result, -> { Payroc::Types::BankTransferResult }, optional: false, nullable: false, api_name: "transactionResult"
+      field :transaction_result, -> { Payroc::Types::BankTransferResult }, optional: true, nullable: false, api_name: "transactionResult"
       field :custom_fields, -> { Internal::Types::Array[Payroc::Types::CustomField] }, optional: true, nullable: false, api_name: "customFields"
     end
   end

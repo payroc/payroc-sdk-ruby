@@ -45,7 +45,7 @@ class BoardingPricingIntentsWireTest < WireMockTestCase
         yourCustomField: "abc123"
       },
       country: "US",
-      version: "5.0",
+      version: "5.2",
       base: {
         address_verification: 5,
         annual_fee: {
@@ -112,7 +112,7 @@ class BoardingPricingIntentsWireTest < WireMockTestCase
         yourCustomField: "abc123"
       },
       country: "US",
-      version: "5.0",
+      version: "5.2",
       base: {
         address_verification: 5,
         annual_fee: {

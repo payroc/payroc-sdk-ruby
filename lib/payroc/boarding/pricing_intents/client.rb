@@ -109,7 +109,7 @@ module Payroc
         # @option request_options [Integer] :timeout_in_seconds
         # @option params [String] :idempotency_key
         #
-        # @return [Payroc::Types::PricingIntent50]
+        # @return [Payroc::Types::PricingIntent52]
         def create(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
           headers = {}
@@ -161,7 +161,7 @@ module Payroc
         # @option request_options [Integer] :timeout_in_seconds
         # @option params [String] :pricing_intent_id
         #
-        # @return [Payroc::Types::PricingIntent50]
+        # @return [Payroc::Types::PricingIntent52]
         def retrieve(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
           request = Payroc::Internal::JSON::Request.new(
@@ -307,7 +307,7 @@ module Payroc
         # @option params [String] :pricing_intent_id
         # @option params [String] :idempotency_key
         #
-        # @return [Payroc::Types::PricingIntent50]
+        # @return [Payroc::Types::PricingIntent52]
         def partially_update(request_options: {}, **params)
           params = Payroc::Internal::Types::Utils.normalize_keys(params)
           path_param_names = %i[pricing_intent_id]

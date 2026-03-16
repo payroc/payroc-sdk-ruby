@@ -3,7 +3,7 @@
 module Payroc
   module Types
     class SecureTokenPaginatedListWithAccountType < Internal::Types::Model
-      field :data, -> { Internal::Types::Array[Payroc::Types::SecureTokenWithAccountType] }, optional: true, nullable: false
+      field :data, -> { Internal::Types::Array[Payroc::Types::SecureTokenWithAccountType] }, optional: false, nullable: false
     end
   end
 end

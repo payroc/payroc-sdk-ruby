@@ -2482,7 +2482,7 @@ You can’t send the after parameter in the same request as the before parameter
 </dl>
 </details>
 
-<details><summary><code>client.boarding.pricing_intents.<a href="/lib/payroc/boarding/pricing_intents/client.rb">create</a>(request) -> Payroc::Types::PricingIntent50</code></summary>
+<details><summary><code>client.boarding.pricing_intents.<a href="/lib/payroc/boarding/pricing_intents/client.rb">create</a>(request) -> Payroc::Types::PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2529,7 +2529,7 @@ client.boarding.pricing_intents.create(
     yourCustomField: "abc123"
   },
   country: "US",
-  version: "5.0",
+  version: "5.2",
   base: {
     address_verification: 5,
     annual_fee: {
@@ -2572,7 +2572,7 @@ client.boarding.pricing_intents.create(
 <dl>
 <dd>
 
-**request:** `Payroc::Types::PricingIntent50` 
+**request:** `Payroc::Types::PricingIntent52` 
     
 </dd>
 </dl>
@@ -2592,7 +2592,7 @@ client.boarding.pricing_intents.create(
 </dl>
 </details>
 
-<details><summary><code>client.boarding.pricing_intents.<a href="/lib/payroc/boarding/pricing_intents/client.rb">retrieve</a>(pricing_intent_id) -> Payroc::Types::PricingIntent50</code></summary>
+<details><summary><code>client.boarding.pricing_intents.<a href="/lib/payroc/boarding/pricing_intents/client.rb">retrieve</a>(pricing_intent_id) -> Payroc::Types::PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -2707,7 +2707,7 @@ client.boarding.pricing_intents.update(
     yourCustomField: "abc123"
   },
   country: "US",
-  version: "5.0",
+  version: "5.2",
   base: {
     address_verification: 5,
     annual_fee: {
@@ -2772,7 +2772,7 @@ client.boarding.pricing_intents.update(
 <dl>
 <dd>
 
-**request:** `Payroc::Types::PricingIntent50` 
+**request:** `Payroc::Types::PricingIntent52` 
     
 </dd>
 </dl>
@@ -2860,7 +2860,7 @@ client.boarding.pricing_intents.delete(pricing_intent_id: "5")
 </dl>
 </details>
 
-<details><summary><code>client.boarding.pricing_intents.<a href="/lib/payroc/boarding/pricing_intents/client.rb">partially_update</a>(pricing_intent_id, request) -> Payroc::Types::PricingIntent50</code></summary>
+<details><summary><code>client.boarding.pricing_intents.<a href="/lib/payroc/boarding/pricing_intents/client.rb">partially_update</a>(pricing_intent_id, request) -> Payroc::Types::PricingIntent52</code></summary>
 <dl>
 <dd>
 
@@ -14124,3 +14124,4 @@ The value of the type parameter determines which variant you should use:
 </dd>
 </dl>
 </details>
+

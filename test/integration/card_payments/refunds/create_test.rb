@@ -12,10 +12,10 @@ module Integration
       # Based on papi-sdk-dotnet CreateTests.cs
       class CreateTest < Minitest::Test
         def setup
-          @api_key = ENV["PAYROC_API_KEY_PAYMENTS"]
+          @api_key = ENV["PAYROC_API_KEY_PAYMENTS"] || ENV["PAYROC_API_KEY"]
           @terminal_id_avs = ENV["TERMINAL_ID_AVS"]
           
-          skip "PAYROC_API_KEY_PAYMENTS environment variable not set" unless @api_key
+          skip "PAYROC_API_KEY_PAYMENTS or PAYROC_API_KEY environment variable not set" unless @api_key
           skip "TERMINAL_ID_AVS environment variable not set" unless @terminal_id_avs
           
           @client = Payroc::Client.new(

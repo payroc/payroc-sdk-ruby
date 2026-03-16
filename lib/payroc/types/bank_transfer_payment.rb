@@ -12,7 +12,7 @@ module Payroc
       field :refunds, -> { Internal::Types::Array[Payroc::Types::RefundSummary] }, optional: true, nullable: false
       field :returns, -> { Internal::Types::Array[Payroc::Types::BankTransferReturnSummary] }, optional: true, nullable: false
       field :representment, -> { Payroc::Types::PaymentSummary }, optional: true, nullable: false
-      field :transaction_result, -> { Payroc::Types::BankTransferResult }, optional: false, nullable: false, api_name: "transactionResult"
+      field :transaction_result, -> { Payroc::Types::BankTransferResult }, optional: true, nullable: false, api_name: "transactionResult"
       field :custom_fields, -> { Internal::Types::Array[Payroc::Types::CustomField] }, optional: true, nullable: false, api_name: "customFields"
     end
   end

@@ -2,7 +2,7 @@
 
 module Payroc
   module Types
-    class BaseUsMonthly < Internal::Types::Model
+    class PlatinumSecurityMonthly < Internal::Types::Model
       field :amount, -> { Integer }, optional: true, nullable: false
     end
   end
