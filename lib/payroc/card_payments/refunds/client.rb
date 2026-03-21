@@ -50,7 +50,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "payments/#{params[:payment_id]}/reverse",
+            path: "payments/#{URI.encode_uri_component(params[:payment_id].to_s)}/reverse",
             headers: headers,
             body: body,
             request_options: request_options
@@ -109,7 +109,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "payments/#{params[:payment_id]}/refund",
+            path: "payments/#{URI.encode_uri_component(params[:payment_id].to_s)}/refund",
             headers: headers,
             body: body,
             request_options: request_options
@@ -307,7 +307,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "refunds/#{params[:refund_id]}",
+            path: "refunds/#{URI.encode_uri_component(params[:refund_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -368,7 +368,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "refunds/#{params[:refund_id]}/adjust",
+            path: "refunds/#{URI.encode_uri_component(params[:refund_id].to_s)}/adjust",
             headers: headers,
             body: body,
             request_options: request_options
@@ -418,7 +418,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "refunds/#{params[:refund_id]}/reverse",
+            path: "refunds/#{URI.encode_uri_component(params[:refund_id].to_s)}/reverse",
             headers: headers,
             request_options: request_options
           )

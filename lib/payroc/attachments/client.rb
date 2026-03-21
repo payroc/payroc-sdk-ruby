@@ -60,7 +60,7 @@ module Payroc
         request = Payroc::Internal::Multipart::Request.new(
           base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
           method: "POST",
-          path: "processing-accounts/#{params[:processing_account_id]}/attachments",
+          path: "processing-accounts/#{URI.encode_uri_component(params[:processing_account_id].to_s)}/attachments",
           body: body,
           request_options: request_options
         )
@@ -101,7 +101,7 @@ module Payroc
         request = Payroc::Internal::JSON::Request.new(
           base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
           method: "GET",
-          path: "attachments/#{params[:attachment_id]}",
+          path: "attachments/#{URI.encode_uri_component(params[:attachment_id].to_s)}",
           request_options: request_options
         )
         begin

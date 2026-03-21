@@ -168,7 +168,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "funding-instructions/#{params[:instruction_id]}",
+            path: "funding-instructions/#{URI.encode_uri_component(params[:instruction_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -222,7 +222,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "funding-instructions/#{params[:instruction_id]}",
+            path: "funding-instructions/#{URI.encode_uri_component(params[:instruction_id].to_s)}",
             body: Payroc::Types::Instruction.new(body_params).to_h,
             request_options: request_options
           )
@@ -267,7 +267,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "funding-instructions/#{params[:instruction_id]}",
+            path: "funding-instructions/#{URI.encode_uri_component(params[:instruction_id].to_s)}",
             request_options: request_options
           )
           begin

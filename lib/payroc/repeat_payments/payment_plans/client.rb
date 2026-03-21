@@ -55,7 +55,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/payment-plans",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/payment-plans",
             query: query_params,
             request_options: request_options
           )
@@ -129,7 +129,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/payment-plans",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/payment-plans",
             headers: headers,
             body: Payroc::Types::PaymentPlan.new(body_params).to_h,
             request_options: request_options
@@ -180,7 +180,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/payment-plans/#{params[:payment_plan_id]}",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/payment-plans/#{URI.encode_uri_component(params[:payment_plan_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -233,7 +233,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/payment-plans/#{params[:payment_plan_id]}",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/payment-plans/#{URI.encode_uri_component(params[:payment_plan_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -288,7 +288,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PATCH",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/payment-plans/#{params[:payment_plan_id]}",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/payment-plans/#{URI.encode_uri_component(params[:payment_plan_id].to_s)}",
             headers: headers,
             body: body_params,
             request_options: request_options

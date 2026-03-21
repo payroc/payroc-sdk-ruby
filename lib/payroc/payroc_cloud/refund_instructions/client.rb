@@ -49,7 +49,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "devices/#{params[:serial_number]}/refund-instructions",
+            path: "devices/#{URI.encode_uri_component(params[:serial_number].to_s)}/refund-instructions",
             headers: headers,
             body: body,
             request_options: request_options
@@ -92,7 +92,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "refund-instructions/#{params[:refund_instruction_id]}",
+            path: "refund-instructions/#{URI.encode_uri_component(params[:refund_instruction_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -134,7 +134,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "refund-instructions/#{params[:refund_instruction_id]}",
+            path: "refund-instructions/#{URI.encode_uri_component(params[:refund_instruction_id].to_s)}",
             request_options: request_options
           )
           begin

@@ -171,7 +171,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "merchant-platforms/#{params[:merchant_platform_id]}",
+            path: "merchant-platforms/#{URI.encode_uri_component(params[:merchant_platform_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -238,7 +238,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "merchant-platforms/#{params[:merchant_platform_id]}/processing-accounts",
+            path: "merchant-platforms/#{URI.encode_uri_component(params[:merchant_platform_id].to_s)}/processing-accounts",
             query: query_params,
             request_options: request_options
           )
@@ -307,7 +307,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "merchant-platforms/#{params[:merchant_platform_id]}/processing-accounts",
+            path: "merchant-platforms/#{URI.encode_uri_component(params[:merchant_platform_id].to_s)}/processing-accounts",
             headers: headers,
             body: Payroc::Types::CreateProcessingAccount.new(body_params).to_h,
             request_options: request_options

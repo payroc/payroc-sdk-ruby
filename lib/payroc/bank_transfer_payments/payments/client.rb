@@ -199,7 +199,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "bank-transfer-payments/#{params[:payment_id]}",
+            path: "bank-transfer-payments/#{URI.encode_uri_component(params[:payment_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -255,7 +255,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "bank-transfer-payments/#{params[:payment_id]}/represent",
+            path: "bank-transfer-payments/#{URI.encode_uri_component(params[:payment_id].to_s)}/represent",
             headers: headers,
             body: body,
             request_options: request_options

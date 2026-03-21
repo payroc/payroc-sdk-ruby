@@ -104,7 +104,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "funding-accounts/#{params[:funding_account_id]}",
+            path: "funding-accounts/#{URI.encode_uri_component(params[:funding_account_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -156,7 +156,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "funding-accounts/#{params[:funding_account_id]}",
+            path: "funding-accounts/#{URI.encode_uri_component(params[:funding_account_id].to_s)}",
             body: Payroc::Types::FundingAccount.new(body_params).to_h,
             request_options: request_options
           )
@@ -198,7 +198,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "funding-accounts/#{params[:funding_account_id]}",
+            path: "funding-accounts/#{URI.encode_uri_component(params[:funding_account_id].to_s)}",
             request_options: request_options
           )
           begin

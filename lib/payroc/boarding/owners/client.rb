@@ -50,7 +50,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "owners/#{params[:owner_id]}",
+            path: "owners/#{URI.encode_uri_component(params[:owner_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -107,7 +107,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "owners/#{params[:owner_id]}",
+            path: "owners/#{URI.encode_uri_component(params[:owner_id].to_s)}",
             body: Payroc::Types::Owner.new(body_params).to_h,
             request_options: request_options
           )
@@ -154,7 +154,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "owners/#{params[:owner_id]}",
+            path: "owners/#{URI.encode_uri_component(params[:owner_id].to_s)}",
             request_options: request_options
           )
           begin

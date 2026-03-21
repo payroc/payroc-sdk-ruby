@@ -49,7 +49,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/single-use-tokens",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/single-use-tokens",
             headers: headers,
             body: body,
             request_options: request_options

@@ -109,7 +109,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "batches/#{params[:batch_id]}",
+            path: "batches/#{URI.encode_uri_component(params[:batch_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -227,7 +227,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "transactions/#{params[:transaction_id]}",
+            path: "transactions/#{URI.encode_uri_component(params[:transaction_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -338,7 +338,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "authorizations/#{params[:authorization_id]}",
+            path: "authorizations/#{URI.encode_uri_component(params[:authorization_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -442,7 +442,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "disputes/#{params[:dispute_id]}/statuses",
+            path: "disputes/#{URI.encode_uri_component(params[:dispute_id].to_s)}/statuses",
             request_options: request_options
           )
           begin
@@ -552,7 +552,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "ach-deposits/#{params[:ach_deposit_id]}",
+            path: "ach-deposits/#{URI.encode_uri_component(params[:ach_deposit_id].to_s)}",
             request_options: request_options
           )
           begin

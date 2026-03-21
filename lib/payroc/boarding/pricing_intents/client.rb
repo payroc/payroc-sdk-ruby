@@ -167,7 +167,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "pricing-intents/#{params[:pricing_intent_id]}",
+            path: "pricing-intents/#{URI.encode_uri_component(params[:pricing_intent_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -219,7 +219,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "pricing-intents/#{params[:pricing_intent_id]}",
+            path: "pricing-intents/#{URI.encode_uri_component(params[:pricing_intent_id].to_s)}",
             body: body_params,
             request_options: request_options
           )
@@ -263,7 +263,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "pricing-intents/#{params[:pricing_intent_id]}",
+            path: "pricing-intents/#{URI.encode_uri_component(params[:pricing_intent_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -319,7 +319,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PATCH",
-            path: "pricing-intents/#{params[:pricing_intent_id]}",
+            path: "pricing-intents/#{URI.encode_uri_component(params[:pricing_intent_id].to_s)}",
             headers: headers,
             body: body_params,
             request_options: request_options
