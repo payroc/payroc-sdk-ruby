@@ -149,7 +149,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "event-subscriptions/#{params[:subscription_id]}",
+            path: "event-subscriptions/#{URI.encode_uri_component(params[:subscription_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -201,7 +201,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "event-subscriptions/#{params[:subscription_id]}",
+            path: "event-subscriptions/#{URI.encode_uri_component(params[:subscription_id].to_s)}",
             body: Payroc::Types::EventSubscription.new(body_params).to_h,
             request_options: request_options
           )
@@ -245,7 +245,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "event-subscriptions/#{params[:subscription_id]}",
+            path: "event-subscriptions/#{URI.encode_uri_component(params[:subscription_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -298,7 +298,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PATCH",
-            path: "event-subscriptions/#{params[:subscription_id]}",
+            path: "event-subscriptions/#{URI.encode_uri_component(params[:subscription_id].to_s)}",
             headers: headers,
             body: body_params,
             request_options: request_options

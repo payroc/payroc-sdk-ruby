@@ -61,7 +61,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "payment-links/#{params[:payment_link_id]}/sharing-events",
+            path: "payment-links/#{URI.encode_uri_component(params[:payment_link_id].to_s)}/sharing-events",
             query: query_params,
             request_options: request_options
           )
@@ -120,7 +120,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "payment-links/#{params[:payment_link_id]}/sharing-events",
+            path: "payment-links/#{URI.encode_uri_component(params[:payment_link_id].to_s)}/sharing-events",
             headers: headers,
             body: Payroc::Types::PaymentLinkEmailShareEvent.new(body_params).to_h,
             request_options: request_options

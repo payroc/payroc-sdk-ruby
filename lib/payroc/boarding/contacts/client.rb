@@ -44,7 +44,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "contacts/#{params[:contact_id]}",
+            path: "contacts/#{URI.encode_uri_component(params[:contact_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -96,7 +96,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "contacts/#{params[:contact_id]}",
+            path: "contacts/#{URI.encode_uri_component(params[:contact_id].to_s)}",
             body: Payroc::Types::Contact.new(body_params).to_h,
             request_options: request_options
           )
@@ -138,7 +138,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "contacts/#{params[:contact_id]}",
+            path: "contacts/#{URI.encode_uri_component(params[:contact_id].to_s)}",
             request_options: request_options
           )
           begin

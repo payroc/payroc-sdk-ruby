@@ -161,7 +161,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "funding-recipients/#{params[:recipient_id]}",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -212,7 +212,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "PUT",
-            path: "funding-recipients/#{params[:recipient_id]}",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}",
             body: Payroc::Types::FundingRecipient.new(body_params).to_h,
             request_options: request_options
           )
@@ -253,7 +253,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "DELETE",
-            path: "funding-recipients/#{params[:recipient_id]}",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -300,7 +300,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "funding-recipients/#{params[:recipient_id]}/funding-accounts",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}/funding-accounts",
             request_options: request_options
           )
           begin
@@ -354,7 +354,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "funding-recipients/#{params[:recipient_id]}/funding-accounts",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}/funding-accounts",
             headers: headers,
             body: Payroc::Types::FundingAccount.new(body_params).to_h,
             request_options: request_options
@@ -407,7 +407,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "funding-recipients/#{params[:recipient_id]}/owners",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}/owners",
             request_options: request_options
           )
           begin
@@ -462,7 +462,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "POST",
-            path: "funding-recipients/#{params[:recipient_id]}/owners",
+            path: "funding-recipients/#{URI.encode_uri_component(params[:recipient_id].to_s)}/owners",
             headers: headers,
             body: Payroc::Types::Owner.new(body_params).to_h,
             request_options: request_options

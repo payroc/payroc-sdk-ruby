@@ -50,7 +50,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "terminal-orders/#{params[:terminal_order_id]}",
+            path: "terminal-orders/#{URI.encode_uri_component(params[:terminal_order_id].to_s)}",
             request_options: request_options
           )
           begin

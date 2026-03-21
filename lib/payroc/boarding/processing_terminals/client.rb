@@ -52,7 +52,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "processing-terminals/#{params[:processing_terminal_id]}",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}",
             request_options: request_options
           )
           begin
@@ -89,7 +89,7 @@ module Payroc
           request = Payroc::Internal::JSON::Request.new(
             base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
             method: "GET",
-            path: "processing-terminals/#{params[:processing_terminal_id]}/host-configurations",
+            path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/host-configurations",
             request_options: request_options
           )
           begin

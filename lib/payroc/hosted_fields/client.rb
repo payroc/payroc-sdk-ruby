@@ -49,7 +49,7 @@ module Payroc
         request = Payroc::Internal::JSON::Request.new(
           base_url: request_options[:base_url] || @base_url || @environment&.dig(:api),
           method: "POST",
-          path: "processing-terminals/#{params[:processing_terminal_id]}/hosted-fields-sessions",
+          path: "processing-terminals/#{URI.encode_uri_component(params[:processing_terminal_id].to_s)}/hosted-fields-sessions",
           headers: headers,
           body: body,
           request_options: request_options
