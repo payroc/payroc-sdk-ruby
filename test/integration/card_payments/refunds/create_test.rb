@@ -18,10 +18,25 @@ module Integration
           skip "PAYROC_API_KEY_PAYMENTS or PAYROC_API_KEY environment variable not set" unless @api_key
           skip "TERMINAL_ID_AVS environment variable not set" unless @terminal_id_avs
           
+          environment = get_custom_environment
+          
           @client = Payroc::Client.new(
-            environment: Payroc::Environment::UAT,
+            environment: environment,
             api_key: @api_key
           )
+        end
+
+        def get_custom_environment
+          api_base_url = ENV["PAYROC_API_BASE_URL"]
+          identity_base_url = ENV["PAYROC_IDENTITY_BASE_URL"]
+
+          # If custom URLs are provided, use them
+          if api_base_url && !api_base_url.empty? && identity_base_url && !identity_base_url.empty?
+            return { api: api_base_url, identity: identity_base_url }
+          end
+
+          # Otherwise, fall back to UAT
+          Payroc::Environment::UAT
         end
 
         def test_create_unreferenced_refund_smoke_test

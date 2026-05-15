@@ -70,6 +70,7 @@ class CardPaymentsRefundsWireTest < WireMockTestCase
       first_6: "453985",
       last_4: "7062",
       tender: "ebt",
+      status: %w[accepted ready complete],
       date_from: "2024-07-01T15:30:00Z",
       date_to: "2024-07-03T15:30:00Z",
       settlement_state: "settled",

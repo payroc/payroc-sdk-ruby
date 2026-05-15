@@ -20,6 +20,8 @@ class BankTransferPaymentsPaymentsWireTest < WireMockTestCase
       order_id: "OrderRef6543",
       name_on_account: "Sarah%20Hazel%20Hopper",
       last_4: "7890",
+      type: ["payment"],
+      status: ["ready"],
       date_from: "2024-07-01T00:00:00Z",
       date_to: "2024-07-31T23:59:59Z",
       settlement_state: "settled",

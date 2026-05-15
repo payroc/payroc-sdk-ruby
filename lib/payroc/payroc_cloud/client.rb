@@ -33,6 +33,11 @@ module Payroc
       def signatures
         @signatures ||= Payroc::PayrocCloud::Signatures::Client.new(client: @client, base_url: @base_url, environment: @environment)
       end
+
+      # @return [Payroc::ClosedLoopReads::Client]
+      def closed_loop_reads
+        @closed_loop_reads ||= Payroc::PayrocCloud::ClosedLoopReads::Client.new(client: @client, base_url: @base_url, environment: @environment)
+      end
     end
   end
 end

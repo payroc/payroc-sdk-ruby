@@ -596,7 +596,7 @@ client.hosted_fields.create(
 
 Version of the Hosted Fields JavaScript library that you are using.  
 
-The current production version is `1.6.0.172441`.
+The current production version is `1.7.0.261471`.
     
 </dd>
 </dl>
@@ -827,9 +827,9 @@ client.attachments.upload_to_processing_account(
 
 Use this method to retrieve the details of an attachment.  
 
-To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the method that you used to upload the attachment.  
+To retrieve the details of an attachment you need its attachmentId. Our gateway returned the attachmentId in the response of the [Upload Attachment to Processing Account](https://docs.payroc.com/api/schema/boarding/processing-accounts/upload-to-processing-account) method.  
 
-Our gateway returns information about the attachment, including its upload status and the entity that the attachment is linked to. Our gateway doesn't return the file that you uploaded.
+Our gateway returns information about the attachment, including its upload status and the entity that the attachment is linked to. Our gateway doesn't return the file that you uploaded.  
 </dd>
 </dl>
 </dd>
@@ -859,7 +859,7 @@ client.attachments.retrieve(attachment_id: "12876")
 <dl>
 <dd>
 
-**attachment_id:** `String` — Unique identifier of the attachment
+**attachment_id:** `String` — Unique identifier of the attachment.
     
 </dd>
 </dl>
@@ -988,6 +988,8 @@ client.bank_transfer_payments.payments.list(
   order_id: "OrderRef6543",
   name_on_account: "Sarah%20Hazel%20Hopper",
   last_4: "7890",
+  type: ["payment"],
+  status: ["ready"],
   date_from: "2024-07-01T00:00:00Z",
   date_to: "2024-07-31T23:59:59Z",
   settlement_state: "settled",
@@ -1701,6 +1703,8 @@ client.bank_transfer_payments.refunds.list(
   order_id: "OrderRef6543",
   name_on_account: "Sarah%20Hazel%20Hopper",
   last_4: "7062",
+  type: ["refund"],
+  status: ["ready"],
   date_from: "2024-07-01T00:00:00Z",
   date_to: "2024-07-31T23:59:59Z",
   settlement_state: "settled",
@@ -5115,6 +5119,9 @@ client.card_payments.payments.list(
   first_6: "453985",
   last_4: "7062",
   tender: "ebt",
+  tip_mode: %w[noTip prompted],
+  type: %w[sale preAuthorization],
+  status: %w[accepted ready complete],
   date_from: "2024-07-01T15:30:00Z",
   date_to: "2024-07-03T15:30:00Z",
   settlement_state: "settled",
@@ -6133,6 +6140,7 @@ client.card_payments.refunds.list(
   first_6: "453985",
   last_4: "7062",
   tender: "ebt",
+  status: %w[accepted ready complete],
   date_from: "2024-07-01T15:30:00Z",
   date_to: "2024-07-03T15:30:00Z",
   settlement_state: "settled",
@@ -10745,6 +10753,75 @@ client.payroc_cloud.signatures.retrieve(signature_id: "JDN4ILZB0T")
 <dd>
 
 **request_options:** `Payroc::PayrocCloud::Signatures::RequestOptions` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## PayrocCloud ClosedLoopReads
+<details><summary><code>client.payroc_cloud.closed_loop_reads.<a href="/lib/payroc/payroc_cloud/closed_loop_reads/client.rb">retrieve</a>(closed_loop_read_id) -> Payroc::Types::ClosedLoopResponse</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Use this method to retrieve information that a payment device captured from a closed-loop card.  
+
+A closed-loop card is a type of card that a customer can use only with a specific merchant. Each time a payment device captures information from a closed-loop card, we store the information as a closed-loop read.  
+
+Our gateway returns the following information from a closed-loop read:  
+-	Date that the payment device captured the information.
+-	Unstructured payload from the card.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```ruby
+client.payroc_cloud.closed_loop_reads.retrieve(closed_loop_read_id: "JDN4ILZB0T")
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**closed_loop_read_id:** `String` — Unique identifier that we assigned to the closed-loop read.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request_options:** `Payroc::PayrocCloud::ClosedLoopReads::RequestOptions` 
     
 </dd>
 </dl>
