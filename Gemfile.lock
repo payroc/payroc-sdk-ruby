@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    payroc (0.0.1438)
+    payroc (0.0.1452)
       sentry-ruby (~> 6.0)
 
 GEM
