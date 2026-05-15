@@ -6,6 +6,7 @@ module Payroc
     class CustomizationOptions < Internal::Types::Model
       field :ebt_details, -> { Payroc::Types::EbtDetails }, optional: true, nullable: false, api_name: "ebtDetails"
       field :entry_method, -> { Payroc::Types::CustomizationOptionsEntryMethod }, optional: true, nullable: false, api_name: "entryMethod"
+      field :closed_loop_options, -> { Payroc::Types::CustomizationOptionsClosedLoopOptions }, optional: true, nullable: false, api_name: "closedLoopOptions"
     end
   end
 end
